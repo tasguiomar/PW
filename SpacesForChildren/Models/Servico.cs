@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SpacesForChildren.Models
 {
-    public enum TipoServ { Creche, Transporte, Natação, Música, Infantário, Berçário, CTL, Dança, Teatro, Outro }
+    public enum TipoServ { Creche, Transporte, Natação, Música, Infantário, Berçário, CTL, Dança, Teatro, Outro };
 
     public class Servico
     {
@@ -13,6 +13,6 @@ namespace SpacesForChildren.Models
         public string ServicosDescricao { get; set; }
         public float ServicosPreco { get; set; }
         public TipoServ ServicosTipo { get; set; }
-        public int Avaliacao { get; set; 
+        public int Avaliacao { get; set; }
     }
 }
