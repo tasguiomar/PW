@@ -198,12 +198,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Anuncioontroller.cs" />
+    <Compile Include="Controllers\AnuncioController.cs" />
     <Compile Include="Controllers\AvaliacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstituicaoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaiController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\RespostaController.cs" />
+    <Compile Include="Controllers\ServicoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -294,8 +297,11 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Anuncioontroller\" />
     <Folder Include="Views\Avaliacao\" />
+    <Folder Include="Views\Instituicao\" />
+    <Folder Include="Views\Pai\" />
     <Folder Include="Views\Pedido\" />
     <Folder Include="Views\Resposta\" />
+    <Folder Include="Views\Servico\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

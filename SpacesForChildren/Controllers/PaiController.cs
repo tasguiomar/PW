@@ -6,27 +6,27 @@ using System.Web.Mvc;
 
 namespace SpacesForChildren.Controllers
 {
-    public class Anuncioontroller : Controller
+    public class PaiController : Controller
     {
-        // GET: Anuncioontroller
+        // GET: Pai
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Anuncioontroller/Details/5
+        // GET: Pai/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Anuncioontroller/Create
+        // GET: Pai/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Anuncioontroller/Create
+        // POST: Pai/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +42,13 @@ namespace SpacesForChildren.Controllers
             }
         }
 
-        // GET: Anuncioontroller/Edit/5
+        // GET: Pai/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Anuncioontroller/Edit/5
+        // POST: Pai/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +64,13 @@ namespace SpacesForChildren.Controllers
             }
         }
 
-        // GET: Anuncioontroller/Delete/5
+        // GET: Pai/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Anuncioontroller/Delete/5
+        // POST: Pai/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
