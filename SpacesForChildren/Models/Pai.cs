@@ -13,5 +13,8 @@ namespace SpacesForChildren.Models
         public int PaisNif { get; set; }
         public int PaisTelemovel { get; set; }
         public string PaisEmail { get; set; }
+
+        public virtual IList<Pedido> Pedidos { get; set; }
+        public virtual IList<Avaliacao> Avaliacoes { get; set; }
     }
 }

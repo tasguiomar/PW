@@ -12,7 +12,10 @@ namespace SpacesForChildren.Models
         public int AvaliacaoLocalizacao { get; set; }
         public int AvaliacaoAmbiente { get; set; }
         public int AvaliacaoGeral { get; set; }
-        public int Pai { get; set; }
-        public int Servico { get; set; }
+        public int PaiID { get; set; }
+        public int ServicoID { get; set; }
+
+        public virtual Servico Servico { get; set; }
+        public virtual Pai Pai { get; set; }
     }
 }
