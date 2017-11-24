@@ -16,5 +16,9 @@ namespace SpacesForChildren.Models
         public int InstituicaoTelefone { get; set; }
         public string InstituicaoCidade { get; set; }
         public string InstituicaoMorada { get; set; }
+
+        public virtual IList<Servico> Servicos { get; set; }
+        public virtual IList<Anuncio> Anuncios { get; set; }
+        public virtual IList<Resposta> Respostas { get; set; }
     }
 }
