@@ -11,7 +11,10 @@ namespace SpacesForChildren.Models
         public string AnuncioTitulo { get; set; }
         public string AnuncioDescricao { get; set; }
         public DateTime? AnuncioData { get; set; }
-        public int Instituicao { get; set; }
-        public int Servico { get; set; }
+        public int InstituicaoID { get; set; }
+        public int ServicoID { get; set; }
+        public virtual Instituicao Instituicao { get; set; }
+        public virtual Servico Servico { get; set; }
+        public virtual IList<Pedido> Pedido { get; set; }
     }
 }
