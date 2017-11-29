@@ -13,11 +13,9 @@ namespace SpacesForChildren.Models
         public string ServicosDescricao { get; set; }
         public float ServicosPreco { get; set; }
         public TipoServ ServicosTipo { get; set; }
-        public int AvaliacaoID { get; set; }
         public int InstituicaoID { get; set; }
 
         public virtual Instituicao Instituicao { get; set; }
-        public virtual Avaliacao Avaliacao { get; set; }
     }
 }
 
