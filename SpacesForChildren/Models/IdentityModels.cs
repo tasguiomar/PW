@@ -20,6 +20,8 @@ namespace SpacesForChildren.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        private string v;
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

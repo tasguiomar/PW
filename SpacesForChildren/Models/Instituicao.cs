@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -7,8 +8,12 @@ namespace SpacesForChildren.Models
 {
     public enum Tipo { Pública, Privada, IPSS };
 
-    public class Instituicao
+    public class Instituicao:DbContext
     {
+        public Instituicao() : base("name:DefaultConnection")
+        {
+
+        }
         public int InstituicaoID { get; set; }
         public Tipo InstituicaoTipo { get; set; }
         public string InstituicaoNome { get; set; }

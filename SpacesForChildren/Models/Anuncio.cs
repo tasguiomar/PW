@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SpacesForChildren.Models
 {
-    public class Anuncio
+    public class Anuncio 
     {
         public int AnuncioID { get; set; }
         public string AnuncioTitulo { get; set; }
