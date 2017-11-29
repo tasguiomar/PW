@@ -8,12 +8,10 @@ namespace SpacesForChildren.Models
 {
     public enum Tipo { Pública, Privada, IPSS };
 
-    public class Instituicao:DbContext
+    public class Instituicao
     {
-        public Instituicao() : base("name:DefaultConnection")
-        {
 
-        }
+     
         public int InstituicaoID { get; set; }
         public Tipo InstituicaoTipo { get; set; }
         public string InstituicaoNome { get; set; }
