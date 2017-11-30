@@ -8,25 +8,25 @@ namespace SpacesForChildren.Controllers
 {
     public class AnuncioController : Controller
     {
-        // GET: Anuncio
+        // GET: Anuncioontroller
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Anuncio/Details/5
+        // GET: Anuncioontroller/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Anuncio/Create
+        // GET: Anuncioontroller/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Anuncio/Create
+        // POST: Anuncioontroller/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +42,13 @@ namespace SpacesForChildren.Controllers
             }
         }
 
-        // GET: Anuncio/Edit/5
+        // GET: Anuncioontroller/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Anuncio/Edit/5
+        // POST: Anuncioontroller/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +64,13 @@ namespace SpacesForChildren.Controllers
             }
         }
 
-        // GET: Anuncio/Delete/5
+        // GET: Anuncioontroller/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Anuncio/Delete/5
+        // POST: Anuncioontroller/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
