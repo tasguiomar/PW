@@ -9,7 +9,7 @@ namespace SpacesForChildren.Models
 
     public class Servico
     {
-        public int ServicosID { get; set; }
+        public int ServicoID { get; set; }
         public string ServicosDescricao { get; set; }
         public float ServicosPreco { get; set; }
         public TipoServ ServicosTipo { get; set; }

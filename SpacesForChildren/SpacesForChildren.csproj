@@ -205,10 +205,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711301350447_ModeloInicial.cs" />
-    <Compile Include="Migrations\201711301350447_ModeloInicial.Designer.cs">
-      <DependentUpon>201711301350447_ModeloInicial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Anuncio.cs" />
@@ -220,7 +216,7 @@
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Resposta.cs" />
     <Compile Include="Models\Servico.cs" />
-    <Compile Include="Models\SpacesForChildrenContext.cs" />
+    <Compile Include="Models\SFCContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -305,11 +301,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711301350447_ModeloInicial.resx">
-      <DependentUpon>201711301350447_ModeloInicial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

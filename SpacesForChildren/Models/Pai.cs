@@ -7,7 +7,7 @@ namespace SpacesForChildren.Models
 {
     public class Pai
     {
-        public int PaisID { get; set; }
+        public int PaiID { get; set; }
         public string PaisNome { get; set; }
         public int PaisCc { get; set; }
         public int PaisNif { get; set; }
