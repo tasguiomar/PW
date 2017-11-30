@@ -11,11 +11,7 @@ namespace SpacesForChildren.Models
     {
         public int RespostaID { get; set; }
         public Resp RespostaDecisao { get; set; }
-        public int InstituicaoID { get; set; }
-        public int PedidoID { get; set; }
-       
-
-        public virtual Pedido Pedido { get; set; }
-        public virtual Instituicao Instituicao { get; set; }
+        public Pedido Pedido { get; set; }
+        public Instituicao Instituicao { get; set; }
     }
 }
