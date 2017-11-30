@@ -6,14 +6,14 @@ namespace SpacesForChildren.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
     public sealed partial class ModeloInicial : IMigrationMetadata
     {
         private readonly ResourceManager Resources = new ResourceManager(typeof(ModeloInicial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711291136566_ModeloInicial"; }
+            get { return "201711301350447_ModeloInicial"; }
         }
         
         string IMigrationMetadata.Source
