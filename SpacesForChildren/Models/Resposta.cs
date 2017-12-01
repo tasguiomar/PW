@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,9 +11,12 @@ namespace SpacesForChildren.Models
 
     public class Resposta
     {
+        [Key]
         public int RespostaID { get; set; }
         public Resp RespostaDecisao { get; set; }
-        public Pedido Pedido { get; set; }
-        public Instituicao Instituicao { get; set; }
+        public int InstituicaoID { get; set; }
+
+        [ForeignKey("InstituicaoID")]
+        public virtual Instituicao Instituicao { get; set; }
     }
 }
