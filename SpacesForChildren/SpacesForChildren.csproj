@@ -200,6 +200,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnunciosController.cs" />
     <Compile Include="Controllers\AvaliacaosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstituicaosController.cs" />
@@ -309,6 +310,11 @@
     <Content Include="Views\Servicoes\Details.cshtml" />
     <Content Include="Views\Servicoes\Edit.cshtml" />
     <Content Include="Views\Servicoes\Index.cshtml" />
+    <Content Include="Views\Anuncios\Create.cshtml" />
+    <Content Include="Views\Anuncios\Delete.cshtml" />
+    <Content Include="Views\Anuncios\Details.cshtml" />
+    <Content Include="Views\Anuncios\Edit.cshtml" />
+    <Content Include="Views\Anuncios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

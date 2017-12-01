@@ -5,7 +5,8 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Anuncios", "Details", "Anuncios")</li>
         <li>@Html.ActionLink("Avaliações", "Create", "Avaliacaos")</li>
         <li>@Html.ActionLink("Lista Avaliações", "Details", "Avaliacaos")</li>
         <li>@Html.ActionLink("Bem-Vindo " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
