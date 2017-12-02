@@ -1,66 +1,69 @@
 ﻿@model SpacesForChildren.Models.Avaliacao
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes Avaliação";
 }
 
-<h2>Details</h2>
+<div class="box">
 
-<div>
-    <h4>Avaliacao</h4>
+    <h2 style="margin-left:15px;">Detalhes</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Pai.PaisNome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pai.PaisNome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Servico.ServicosDescricao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AvaliacaoPreco)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AvaliacaoPreco)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AvaliacaoLocalizacao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AvaliacaoLocalizacao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AvaliacaoAmbiente)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AvaliacaoAmbiente)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AvaliacaoGeral)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AvaliacaoGeral)
+            </dd>
+
+        </dl>
+    </div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Pai.PaisNome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pai.PaisNome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Servico.ServicosDescricao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AvaliacaoPreco)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AvaliacaoPreco)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AvaliacaoLocalizacao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AvaliacaoLocalizacao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AvaliacaoAmbiente)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AvaliacaoAmbiente)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AvaliacaoGeral)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AvaliacaoGeral)
-        </dd>
-
-    </dl>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.AvaliacaoID }) |
+        @Html.ActionLink("Voltar", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AvaliacaoID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

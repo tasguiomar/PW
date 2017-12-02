@@ -1,72 +1,74 @@
 ﻿@model SpacesForChildren.Models.Avaliacao
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Eliminar Avaliação";
 }
 
-<h2>Delete</h2>
+<div class="box">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Avaliacao</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Pai.PaisNome)
-        </dt>
+    <h2 style="margin-left:15px;">Eliminar</h2><h2>Delete</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Pai.PaisNome)
-        </dd>
+    <div>
+        <h4 style="margin-left:15px;">Tem a certeza que quer eliminar?</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Pai.PaisNome)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Pai.PaisNome)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Servico.ServicosDescricao)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AvaliacaoPreco)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Servico.ServicosDescricao)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AvaliacaoPreco)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AvaliacaoPreco)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AvaliacaoLocalizacao)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AvaliacaoPreco)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AvaliacaoLocalizacao)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AvaliacaoLocalizacao)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AvaliacaoAmbiente)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AvaliacaoLocalizacao)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AvaliacaoAmbiente)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AvaliacaoAmbiente)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AvaliacaoGeral)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AvaliacaoAmbiente)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AvaliacaoGeral)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AvaliacaoGeral)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.AvaliacaoGeral)
+            </dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        </dl>
+        <hr />
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                @Html.ActionLink("Voltar", "Index")
+            </div>
+        }
+    </div>
 </div>

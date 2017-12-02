@@ -11,8 +11,11 @@ namespace SpacesForChildren.Models
     {
         [Key]
         public int AnuncioID { get; set; }
+        [Display(Name = "Titulo: ")]
         public string AnuncioTitulo { get; set; }
+        [Display(Name = "Descricao: ")]
         public string AnuncioDescricao { get; set; }
+        [Display(Name = "Data: ")]
         public DateTime? AnuncioData { get; set; }
         [ForeignKey("Instituicao")]
         public int InstituicaoID { get; set; }

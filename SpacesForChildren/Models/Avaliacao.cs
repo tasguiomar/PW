@@ -11,9 +11,13 @@ namespace SpacesForChildren.Models
     {
         [Key]
         public int AvaliacaoID { get; set; }
+        [Display(Name = "Preço: ")]
         public int AvaliacaoPreco { get; set; }
+        [Display(Name = "Localização: ")]
         public int AvaliacaoLocalizacao { get; set; }
+        [Display(Name = "Ambiente:")]
         public int AvaliacaoAmbiente { get; set; }
+        [Display(Name = "Geral: ")]
         public int AvaliacaoGeral { get; set; }
         [ForeignKey("Pai")]
         public int PaiID { get; set; }

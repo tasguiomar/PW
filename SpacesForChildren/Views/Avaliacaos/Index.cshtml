@@ -1,63 +1,66 @@
 ﻿@model IEnumerable<SpacesForChildren.Models.Avaliacao>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Avaliações";
 }
 
-<h2>Index</h2>
+<div class="box">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Pai.PaisNome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AvaliacaoPreco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AvaliacaoLocalizacao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AvaliacaoAmbiente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AvaliacaoGeral)
-        </th>
-        <th></th>
-    </tr>
+    <h2 style="margin-left:15px">Instituições</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pai.PaisNome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Servico.ServicosDescricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AvaliacaoPreco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AvaliacaoLocalizacao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AvaliacaoAmbiente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AvaliacaoGeral)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AvaliacaoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AvaliacaoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AvaliacaoID })
-        </td>
-    </tr>
-}
+    <p style="margin-left:15px">
+        @Html.ActionLink("Avaliar Serviço", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pai.PaisNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvaliacaoPreco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvaliacaoLocalizacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvaliacaoAmbiente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvaliacaoGeral)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pai.PaisNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Servico.ServicosDescricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvaliacaoPreco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvaliacaoLocalizacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvaliacaoAmbiente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvaliacaoGeral)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id=item.AvaliacaoID }) |
+                @Html.ActionLink("Detalhes", "Details", new { id=item.AvaliacaoID }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id=item.AvaliacaoID })
+            </td>
+        </tr>
+    }
+
+    </table>
+</div>
