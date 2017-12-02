@@ -1,58 +1,62 @@
 ﻿@model SpacesForChildren.Models.Anuncio
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes Anúncio";
 }
 
-<h2>Details</h2>
+<div class="box">
 
-<div>
-    <h4>Anuncio</h4>
+    <h2 style="margin-left:15px;">Details</h2>
+
+    <div>
+        <h4 style="margin-left:15px;">Anúncio: @Html.DisplayFor(model => model.AnuncioTitulo)</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Instituicao.InstituicaoNome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Instituicao.InstituicaoNome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Servico.ServicosDescricao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AnuncioTitulo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AnuncioTitulo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AnuncioDescricao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AnuncioDescricao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AnuncioData)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AnuncioData)
+            </dd>
+
+        </dl>
+    </div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Instituicao.InstituicaoNome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Instituicao.InstituicaoNome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Servico.ServicosDescricao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnuncioTitulo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnuncioTitulo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnuncioDescricao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnuncioDescricao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnuncioData)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnuncioData)
-        </dd>
-
-    </dl>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.AnuncioID }) |
+        @Html.ActionLink("Voltar", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AnuncioID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

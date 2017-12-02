@@ -1,57 +1,60 @@
 ﻿@model IEnumerable<SpacesForChildren.Models.Anuncio>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Anúncios";
 }
 
-<h2>Index</h2>
+<div class="box">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Instituicao.InstituicaoNome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnuncioTitulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnuncioDescricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnuncioData)
-        </th>
-        <th></th>
-    </tr>
+    <h2 style="margin-left:15px">Anúncios</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Instituicao.InstituicaoNome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Servico.ServicosDescricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnuncioTitulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnuncioDescricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnuncioData)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AnuncioID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AnuncioID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AnuncioID })
-        </td>
-    </tr>
-}
+    <p style="margin-left:15px">
+        @Html.ActionLink("Criar Anúncio", "Create")
+    </p>
+    <table class="table">
+        <tr class="cabecalho">
+            <th>
+                @Html.DisplayNameFor(model => model.Instituicao.InstituicaoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnuncioTitulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnuncioDescricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnuncioData)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instituicao.InstituicaoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Servico.ServicosDescricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnuncioTitulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnuncioDescricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnuncioData)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id=item.AnuncioID }) |
+                @Html.ActionLink("Detalhes", "Details", new { id=item.AnuncioID }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id=item.AnuncioID })
+            </td>
+        </tr>
+    }
+
+    </table>
+</div>
