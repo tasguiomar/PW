@@ -11,10 +11,12 @@ namespace SpacesForChildren.Models
     {
         [Key]
         public int PedidoID { get; set; }
-        public Pai Pai { get; set; }
+        public int PaiID { get; set; }
         public int AnuncioID { get; set; }
         public int RespostaID { get; set; }
 
+        [ForeignKey("PaiID")]
+        public virtual Pai Pai { get; set; }
         [ForeignKey("AnuncioID")]
         public virtual Anuncio Anuncio { get; set; }
         [ForeignKey("RespostaID")]

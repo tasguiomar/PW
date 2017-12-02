@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SpacesForChildren.Models.Resposta>
+
+@{
+    ViewBag.Title = "Lista de Respostas";
+}
+
+<div class="box">
+
+    <h2 style="margin-left:15px">Respostas</h2>
+
+    <p style="margin-left:15px">
+        @Html.ActionLink("Responder a Pedido", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Instituicao.InstituicaoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RespostaDecisao)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instituicao.InstituicaoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RespostaDecisao)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id=item.RespostaID }) |
+                @Html.ActionLink("Detalhes", "Details", new { id=item.RespostaID }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id=item.RespostaID })
+            </td>
+        </tr>
+    }
+
+    </table>
+</div>

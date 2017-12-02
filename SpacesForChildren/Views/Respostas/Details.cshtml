@@ -1,0 +1,37 @@
+﻿@model SpacesForChildren.Models.Resposta
+
+@{
+    ViewBag.Title = "Detalhes Resposta";
+}
+
+<div class="box">
+
+    <h2 style="margin-left:15px;">Detalhes</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Instituicao.InstituicaoNome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Instituicao.InstituicaoNome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RespostaDecisao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RespostaDecisao)
+            </dd>
+
+        </dl>
+    </div>
+    <hr />
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.RespostaID }) |
+        @Html.ActionLink("Voltar", "Index")
+    </p>
+</div>

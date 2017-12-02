@@ -13,6 +13,7 @@ namespace SpacesForChildren.Models
     {
         [Key]
         public int RespostaID { get; set; }
+        [Display(Name = "Decisão: ")]
         public Resp RespostaDecisao { get; set; }
         public int InstituicaoID { get; set; }
 
