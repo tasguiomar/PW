@@ -1,0 +1,66 @@
+﻿@model SpacesForChildren.Models.Pai
+
+@{
+    ViewBag.Title = "Eliminar Pai";
+}
+
+<div class="box">
+
+    <h2 style="margin-left:15px">Eliminar</h2>
+
+    <div>
+        <h4 style="margin-left:15px;">Tem a certeza que quer eliminar @Html.DisplayFor(model => model.PaisNome)?</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PaisNome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaisNome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaisCc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaisCc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaisNif)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaisNif)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaisTelemovel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaisTelemovel)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaisEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaisEmail)
+            </dd>
+
+        </dl>
+        <hr />
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                @Html.ActionLink("Voltar", "Index")
+            </div>
+        }
+    </div>
+</div>

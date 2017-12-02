@@ -1,0 +1,55 @@
+﻿@model SpacesForChildren.Models.Pai
+
+@{
+    ViewBag.Title = "Detahes Pai";
+}
+
+<div class="box">
+
+    <h2 style="margin-left:15px;">Detalhes</h2>
+
+    <div>
+        <h4 style="margin-left:15px;">Pai: @Html.DisplayFor(model => model.PaisNome)</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaisCc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaisCc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaisNif)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaisNif)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaisTelemovel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaisTelemovel)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaisEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaisEmail)
+            </dd>
+
+        </dl>
+    </div>
+    <hr />
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.PaiID }) |
+        @Html.ActionLink("Voltar", "Index")
+    </p>
+</div>
