@@ -1,56 +1,58 @@
 ﻿@model SpacesForChildren.Models.Servico
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Eliminar Serviço";
 }
 
-<h2>Delete</h2>
+<div class="box">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Servico</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Instituicao.InstituicaoNome)
-        </dt>
+    <h2 style="margin-left:15px;">Eliminar</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Instituicao.InstituicaoNome)
-        </dd>
+    <div>
+        <h4 style="margin-left:15px;">Tem a certeza que quer eliminar?</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Instituicao.InstituicaoNome)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ServicosDescricao)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Instituicao.InstituicaoNome)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ServicosDescricao)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ServicosDescricao)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ServicosPreco)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ServicosDescricao)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ServicosPreco)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ServicosPreco)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ServicosTipo)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ServicosPreco)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ServicosTipo)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ServicosTipo)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.ServicosTipo)
+            </dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        </dl>
+        <hr />
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Voltar", "Index")
+            </div>
+        }
+    </div>
 </div>

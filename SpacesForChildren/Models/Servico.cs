@@ -13,8 +13,11 @@ namespace SpacesForChildren.Models
     {
         [Key]
         public int ServicoID { get; set; }
+        [Display(Name = "Descrição: ")]
         public string ServicosDescricao { get; set; }
+        [Display(Name = "Preço: ")]
         public float ServicosPreco { get; set; }
+        [Display(Name = "Tipo: ")]
         public TipoServ ServicosTipo { get; set; }
         public int InstituicaoID { get; set; }
 
