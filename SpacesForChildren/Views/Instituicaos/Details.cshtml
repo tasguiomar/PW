@@ -1,66 +1,62 @@
 ﻿@model SpacesForChildren.Models.Instituicao
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes Instituição";
 }
 
-<h2>Details</h2>
+<div class="box">
 
-<div>
-    <h4>Instituicao</h4>
+    <h2 style="margin-left:15px;">Detalhes</h2>
+
+    <div>
+        <h4 style="margin-left:15px;">Instituição: @Html.DisplayFor(model => model.InstituicaoNome)</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.InstituicaoTipo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InstituicaoTipo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.InstituicaoEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InstituicaoEmail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.InstituicaoTelefone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InstituicaoTelefone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.InstituicaoCidade)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InstituicaoCidade)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.InstituicaoMorada)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InstituicaoMorada)
+            </dd>
+
+        </dl>
+    </div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.InstituicaoTipo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InstituicaoTipo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.InstituicaoNome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InstituicaoNome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.InstituicaoEmail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InstituicaoEmail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.InstituicaoTelefone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InstituicaoTelefone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.InstituicaoCidade)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InstituicaoCidade)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.InstituicaoMorada)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InstituicaoMorada)
-        </dd>
-
-    </dl>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.InstituicaoID }) |
+        @Html.ActionLink("Voltar", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.InstituicaoID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

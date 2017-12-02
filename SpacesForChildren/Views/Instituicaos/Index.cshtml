@@ -1,63 +1,68 @@
 ﻿@model IEnumerable<SpacesForChildren.Models.Instituicao>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Instituições";
 }
 
-<h2>Index</h2>
+<div class="box">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.InstituicaoTipo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InstituicaoNome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InstituicaoEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InstituicaoTelefone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InstituicaoCidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InstituicaoMorada)
-        </th>
-        <th></th>
-    </tr>
+    <h2 style="margin-left:15px">Instituições</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.InstituicaoTipo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InstituicaoNome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InstituicaoEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InstituicaoTelefone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InstituicaoCidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InstituicaoMorada)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.InstituicaoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.InstituicaoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.InstituicaoID })
-        </td>
-    </tr>
-}
+    <p style="margin-left:15px">
+        @Html.ActionLink("Criar Instituição", "Create")
+    </p>
+    <hr />
+    <table class="table">
+        <tr class="cabecalho">
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoTipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoTelefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoCidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoMorada)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoTipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoTelefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoCidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoMorada)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id=item.InstituicaoID }) |
+                @Html.ActionLink("Detalhes", "Details", new { id=item.InstituicaoID }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id=item.InstituicaoID })
+            </td>
+        </tr>
+    }
+
+    </table>
+
+</div>

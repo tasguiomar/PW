@@ -224,6 +224,12 @@ table {
   border-spacing: 0;
 }
 
+.cabecalho {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
 @media print {
   * {
     color: #000 !important;
@@ -386,7 +392,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #333333;
 }
 
 .sr-only {
@@ -4944,6 +4950,14 @@ a.list-group-item.active > .badge,
   background-color: #eeeeee;
 }
 
+.box {
+  padding: 30px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #eeeeee;
+  border-radius: 5px;
+}
+
 .descricao {
   padding: 30px;
   margin-bottom: 0px;
@@ -6851,4 +6865,10 @@ td.visible-print {
   td.hidden-print {
     display: none !important;
   }
+}
+
+cabecalho_tabelas {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
 }
