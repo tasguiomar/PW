@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SpacesForChildren.Models.Servico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Instituicao.InstituicaoNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServicosDescricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServicosPreco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServicosTipo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instituicao.InstituicaoNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServicosDescricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServicosPreco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServicosTipo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ServicoID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ServicoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ServicoID })
+        </td>
+    </tr>
+}
+
+</table>

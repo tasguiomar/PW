@@ -200,9 +200,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnunciosController.cs" />
+    <Compile Include="Controllers\AvaliacaosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstituicaosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ServicoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -297,6 +300,21 @@
     <Content Include="Views\Instituicaos\Details.cshtml" />
     <Content Include="Views\Instituicaos\Edit.cshtml" />
     <Content Include="Views\Instituicaos\Index.cshtml" />
+    <Content Include="Views\Avaliacaos\Create.cshtml" />
+    <Content Include="Views\Avaliacaos\Delete.cshtml" />
+    <Content Include="Views\Avaliacaos\Details.cshtml" />
+    <Content Include="Views\Avaliacaos\Edit.cshtml" />
+    <Content Include="Views\Avaliacaos\Index.cshtml" />
+    <Content Include="Views\Servicoes\Create.cshtml" />
+    <Content Include="Views\Servicoes\Delete.cshtml" />
+    <Content Include="Views\Servicoes\Details.cshtml" />
+    <Content Include="Views\Servicoes\Edit.cshtml" />
+    <Content Include="Views\Servicoes\Index.cshtml" />
+    <Content Include="Views\Anuncios\Create.cshtml" />
+    <Content Include="Views\Anuncios\Delete.cshtml" />
+    <Content Include="Views\Anuncios\Details.cshtml" />
+    <Content Include="Views\Anuncios\Edit.cshtml" />
+    <Content Include="Views\Anuncios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
