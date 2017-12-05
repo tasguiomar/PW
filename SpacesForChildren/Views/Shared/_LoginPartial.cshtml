@@ -1,22 +1,57 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+
+@if (this.User.IsInRole("Admin"))
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Bem-VindoAAAAAAAA " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+
+
+@if (this.User.IsInRole("Pais"))
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Bem-Vindo " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
+        <li>@Html.ActionLink("PAISSSSSSSSS", "Index", "Instituicaos")</li>
+
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
     }
 }
+
+
+@if (this.User.IsInRole("Instiyuição"))
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+            <li>@Html.ActionLink("INSTITUICAOAOAOAO", "Index", "Instituicaos")</li>
+
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+
+
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Registar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Entrar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+     <ul class="nav navbar-nav navbar-right">
+          <li>@Html.ActionLink("Registar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+          <li>@Html.ActionLink("Entrar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
+ }
+
+

@@ -9,7 +9,6 @@ namespace SpacesForChildren.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
-
     public class ExternalLoginListViewModel
     {
         public string ReturnUrl { get; set; }
@@ -64,6 +63,11 @@ namespace SpacesForChildren.Models
 
     public class RegisterViewModel
     {
+
+        [Display(Name ="Nome")]
+        public string Name { get; set; }
+
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

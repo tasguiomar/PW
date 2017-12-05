@@ -17,9 +17,11 @@ namespace SpacesForChildren.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        ApplicationDbContext context;
 
         public AccountController()
         {
+            context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,6 +141,10 @@ namespace SpacesForChildren.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            //codigo teste
+            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
+            //codigo teste
+
             return View();
         }
 
@@ -155,6 +161,10 @@ namespace SpacesForChildren.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //codigo teste
+                    await this.UserManager.AddToRoleAsync(user.Id, model.Name);
+                    //codigo teste
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

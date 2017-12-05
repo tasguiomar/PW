@@ -208,6 +208,7 @@
     <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Controllers\PedidoesController.cs" />
     <Compile Include="Controllers\RespostasController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ServicoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -333,6 +334,8 @@
     <Content Include="Views\Pedidoes\Details.cshtml" />
     <Content Include="Views\Pedidoes\Edit.cshtml" />
     <Content Include="Views\Pedidoes\Index.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
