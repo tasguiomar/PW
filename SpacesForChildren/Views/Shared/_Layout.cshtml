@@ -18,7 +18,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Registar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                    <li>@Html.ActionLink("Entrar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                </ul>
                 @Html.ActionLink("SpacesForChildren", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -28,6 +33,7 @@
                   @*@ <li>@Html.ActionLink("Criar Perfil", "Index", "Role")</li>*@
                  </ul>
                 @Html.Partial("_LoginPartial")
+                
             </div>
         </div>
     </div>
