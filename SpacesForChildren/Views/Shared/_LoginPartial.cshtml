@@ -48,10 +48,10 @@
 
 
 
-@if (this.User.IsInRole("Instiyuição"))
+@if (this.User.IsInRole("Instituição"))
 {
     <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Instituiçaaaaaao", "Index", "Instituicaos")</li>
+        <li>@Html.ActionLink("Instituição", "Create", "Instituicaos")</li>
     </ul>
 
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))

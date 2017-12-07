@@ -20,6 +20,10 @@ namespace SpacesForChildren.Models
         [Display(Name = "Tipo: ")]
         public TipoServ ServicosTipo { get; set; }
         public int InstituicaoID { get; set; }
+        [Display(Name = "Idade Minima: ")]
+        public int ServicosIdadeMin { get; set; }
+        [Display(Name = "Idade Máxima: ")]
+        public int ServicosIdadeMax { get; set; }
 
         [ForeignKey("InstituicaoID")]
         public virtual Instituicao Instituicao { get; set; }

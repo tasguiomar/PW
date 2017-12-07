@@ -213,9 +213,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712011051374_ModeloInicial.cs" />
-    <Compile Include="Migrations\201712011051374_ModeloInicial.Designer.cs">
-      <DependentUpon>201712011051374_ModeloInicial.cs</DependentUpon>
+    <Compile Include="Migrations\201712071405126_ModeloInicial.cs" />
+    <Compile Include="Migrations\201712071405126_ModeloInicial.Designer.cs">
+      <DependentUpon>201712071405126_ModeloInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712071411504_AdicionaIdade.cs" />
+    <Compile Include="Migrations\201712071411504_AdicionaIdade.Designer.cs">
+      <DependentUpon>201712071411504_AdicionaIdade.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -352,8 +356,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712011051374_ModeloInicial.resx">
-      <DependentUpon>201712011051374_ModeloInicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712071405126_ModeloInicial.resx">
+      <DependentUpon>201712071405126_ModeloInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712071411504_AdicionaIdade.resx">
+      <DependentUpon>201712071411504_AdicionaIdade.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

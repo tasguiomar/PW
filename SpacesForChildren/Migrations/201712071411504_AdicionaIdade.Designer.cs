@@ -7,13 +7,13 @@ namespace SpacesForChildren.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ModeloInicial : IMigrationMetadata
+    public sealed partial class AdicionaIdade : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ModeloInicial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AdicionaIdade));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712011051374_ModeloInicial"; }
+            get { return "201712071411504_AdicionaIdade"; }
         }
         
         string IMigrationMetadata.Source
