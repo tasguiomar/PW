@@ -1,41 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
 
-@if (this.User.IsInRole("Admin"))
+@if (this.User.IsInRole("Pais") || this.User.IsInRole("Admin") || this.User.IsInRole("Instituição"))
 {
-    <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Adminnnnn", "Index", "Instituicaos")</li>
-    </ul>
-
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-        @Html.AntiForgeryToken()
-        <ul class="nav navbar-nav">
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        </ul>
-    }
-}
-
-@if (this.User.IsInRole("Pais"))
-{
-
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Anuncios", "Index", "Anuncios")</li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Avaliação <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li>@Html.ActionLink("Ver Avaliações", "Index", "Avaliacao")</li>
-                    <li>@Html.ActionLink("Ciar Avaliações", "Create", "Avaliacao")</li>
-                    <li>@Html.ActionLink("Editar Avaliações", "Edit", "Avaliacao")</li>
-                </ul>
-            </li>
-            <li>@Html.ActionLink("Instituições", "Index", "Instituicaos")</li>
-            <li>@Html.ActionLink("Respostas", "Index", "Respostas")</li>
-
-
-        </ul>
-    </div>
-
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
@@ -46,21 +12,12 @@
 
 }
 
-
-
-@if (this.User.IsInRole("Instituição"))
+@if(!(this.User.IsInRole("Pais")) && !(this.User.IsInRole("Admin")) && !(this.User.IsInRole("Instituição")))
 {
-    <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Instituição", "Create", "Instituicaos")</li>
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Registar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Entrar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
-
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-        @Html.AntiForgeryToken()
-        <ul class="nav navbar-nav">
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        </ul>
-    }
 }
 
 

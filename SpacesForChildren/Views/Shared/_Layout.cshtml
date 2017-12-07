@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -9,28 +10,87 @@
 
 </head>
 <body>
+   
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                @*<img src="~/Content/logotipo.png" />*@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Registar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                    <li>@Html.ActionLink("Entrar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                </ul>
+               
                 @Html.ActionLink("SpacesForChildren", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Criar Perfil", "Index", "Role")</li>
+                    @*------------------------Verificao do perfil para os menus----------------------*@
+                    @if (this.User.IsInRole("Pais"))
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Anuncios", "Index", "Anuncios")</li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Avaliação <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Ver Avaliações", "Index", "Avaliacaos")</li>
+                                    <li>@Html.ActionLink("Ciar Avaliações", "Create", "Avaliacaos")</li>
+                                    <li>@Html.ActionLink("Editar Avaliações", "Edit", "Avaliacaos")</li>
+                                </ul>
+                            </li>
+                            <li>@Html.ActionLink("Instituições", "Index", "Instituicaos")</li>
+                            <li>@Html.ActionLink("Respostas", "Index", "Respostas")</li>
+                        </ul>
+                    }
+                    @*----------------------------------------------------------------------------------*@
+                    @if (this.User.IsInRole("Instituição"))
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Avaliações", "Index", "Avaliacaos")</li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Anúncios <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Ver Anúncios", "Index", "Anuncios")</li>
+                                    <li>@Html.ActionLink("Ciar Anúncio", "Create", "Anuncios")</li>
+                                    <li>@Html.ActionLink("Editar Anúncio", "Edit", "Anuncios")</li>
+                                </ul>
+                            </li>
+                            <li>@Html.ActionLink("Respostas", "Index", "Respostas")</li>
+                        </ul>
+                    }
+                    @*--------------------------------------------------------------------------------------*@
+
+                    @if (this.User.IsInRole("Admin"))
+                    {
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestão do Site <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Lista Anúncios", "Index", "Anuncios")</li>
+                                    <li>@Html.ActionLink("Lista Instituições", "Index", "Instituicaos")</li>
+                                    <li>@Html.ActionLink("Lista Serviços", "Index", "Servicoes")</li>
+                                    <li>@Html.ActionLink("Lista Pedidos", "Index", "Pedidoes")</li>
+                                    <li>@Html.ActionLink("Lista Respostas", "Index", "Respostas")</li>
+                                    <li>@Html.ActionLink("Lista Avaliações", "Index", "Avaliacaos")</li>
+                                    <li>@Html.ActionLink("Lista Pais", "Index", "Pais")</li>
+                                </ul>
+                            </li>
+                            <li>@Html.ActionLink("Link confirma Pais", "Index", "Avaliacaos")</li>
+                            <li>@Html.ActionLink("Link Confirma Pedido", "Index", "Avaliacaos")</li>
+                        </ul>
+
+                    }
+                    @*--------------------------------------------------------------------------------------------*@
+
+                      @if (!(this.User.IsInRole("Instituição")) && !(this.User.IsInRole("Pais")) && !(this.User.IsInRole("Admin")))
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Avaliações", "Index", "Avaliacaos")</li>
+                            <li>@Html.ActionLink("Instituições", "Index", "Instituicaos")</li>
+                        </ul>
+
+                    }
+
                  </ul>
                 @Html.Partial("_LoginPartial")
                 
