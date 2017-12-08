@@ -1,9 +1,12 @@
 ﻿@model IEnumerable<SpacesForChildren.Models.Instituicao>
+@using PagedList;
+@using PagedList.Mvc;
+
+
 
 @{
     ViewBag.Title = "Lista de Instituições";
 }
-
 <div class="box">
 
     <h2 style="margin-left:15px">Instituições</h2>
@@ -11,57 +14,79 @@
     <p style="margin-left:15px">
         @Html.ActionLink("Criar Instituição", "Create")
     </p>
+
+    
+    @using (Html.BeginForm("Index", "Instituicaos", FormMethod.Get))
+    {
+
+    <b>Procura rápida:</b> 
+                            @Html.RadioButton("option", "Cidade") <text>Cidade</text> 
+                            @Html.RadioButton("option", "Morada") <text> Morada </text>
+                            @Html.TextBox("search") 
+                            <input type="submit" name="submit" value="Search" />
+    }
+
     <hr />
     <table class="table">
-        <tr class="cabecalho">
-            <th>
-                @Html.DisplayNameFor(model => model.InstituicaoTipo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InstituicaoNome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InstituicaoEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InstituicaoTelefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InstituicaoCidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InstituicaoMorada)
-            </th>
-            <th></th>
-        </tr>
+    <tr class="cabecalho">
+        <th>
+            @Html.DisplayNameFor(model => model.InstituicaoTipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstituicaoNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstituicaoEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstituicaoTelefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstituicaoCidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstituicaoMorada)
+        </th>
+        <th></th>
+    </tr>
 
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstituicaoTipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstituicaoNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstituicaoEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstituicaoTelefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstituicaoCidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstituicaoMorada)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.InstituicaoID }) |
-                @Html.ActionLink("Detalhes", "Details", new { id=item.InstituicaoID }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id=item.InstituicaoID })
-            </td>
-        </tr>
-    }
+
+        @if (Model.Count() == 0)
+        {
+            <tr> <td colspan = "3"> Records not found </td></tr >
+        }
+        else
+        {
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstituicaoTipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstituicaoNome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstituicaoEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstituicaoTelefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstituicaoCidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstituicaoMorada)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.InstituicaoID }) |
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.InstituicaoID }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.InstituicaoID })
+                    </td>
+                </tr>
+            }
+        }
 
     </table>
 

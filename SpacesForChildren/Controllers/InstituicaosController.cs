@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Linq.Expressions;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SpacesForChildren.Models;
+using System.Threading.Tasks;
 
 namespace SpacesForChildren.Controllers
 {
@@ -15,10 +17,21 @@ namespace SpacesForChildren.Controllers
         private SFCContext db = new SFCContext();
 
         // GET: Instituicaos
-        public ActionResult Index()
+        public ActionResult Index(string option, string search, int? pageNumber)
         {
+            if (option == "Morada")
+            {
+                //Index action method will return a view with a student records based on what a user specify the value in textbox  
+                return View(db.Instituicoes.Where(x => x.InstituicaoMorada == search || search == null).ToList());
+            }
+            else if (option == "Cidade")
+            {
+                return View(db.Instituicoes.Where(x => x.InstituicaoCidade == search || search == null).ToList());
+            }
+
             return View(db.Instituicoes.ToList());
         }
+
 
         // GET: Instituicaos/Details/5
         public ActionResult Details(int? id)
