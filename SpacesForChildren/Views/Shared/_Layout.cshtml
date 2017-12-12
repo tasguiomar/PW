@@ -48,6 +48,14 @@
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("Avaliações", "Index", "Avaliacaos")</li>
                             <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Serviços<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Ver Serviços", "Index", "Servicoes")</li>
+                                    <li>@Html.ActionLink("Ciar Serviços", "Create", "Servicoes")</li>
+                                    <li>@Html.ActionLink("Editar Serviços", "Edit", "Servicoes")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Anúncios <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>@Html.ActionLink("Ver Anúncios", "Index", "Anuncios")</li>
@@ -87,6 +95,7 @@
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("Avaliações", "Index", "Avaliacaos")</li>
                             <li>@Html.ActionLink("Instituições", "Index", "Instituicaos")</li>
+                            @*<li>@Html.ActionLink("Criar Perfil", "Index", "Role")</li>*@
                         </ul>
 
                     }
