@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using SpacesForChildren.Models;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace SpacesForChildren.Controllers
 {
@@ -63,6 +64,7 @@ namespace SpacesForChildren.Controllers
         {
             if (ModelState.IsValid)
             {
+                instituicao.InstituicaoEmail = User.Identity.GetUserName();
                 db.Instituicoes.Add(instituicao);
                 db.SaveChanges();
                 return RedirectToAction("Index");

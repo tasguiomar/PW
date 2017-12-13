@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SpacesForChildren.Models;
+using System.Web.Security;
+using Microsoft.AspNet.Identity;
 
 namespace SpacesForChildren.Controllers
 {
@@ -39,7 +41,8 @@ namespace SpacesForChildren.Controllers
         // GET: Servicoes/Create
         public ActionResult Create()
         {
-            ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome");
+            //var userId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
+            //ViewBag.instId = 1;
             return View();
         }
 
@@ -52,12 +55,20 @@ namespace SpacesForChildren.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = User.Identity.GetUserName();
+                var userId = db.Instituicoes
+                    .Where(m => m.InstituicaoEmail == user)
+                    .Select(m => m.InstituicaoID)
+                    .SingleOrDefault();
+
+                servico.InstituicaoID = userId;
                 db.Servicos.Add(servico);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", servico.InstituicaoID);
+            //ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", servico.InstituicaoID);
+            
             return View(servico);
         }
 
@@ -73,7 +84,7 @@ namespace SpacesForChildren.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", servico.InstituicaoID);
+            //ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", servico.InstituicaoID);
             return View(servico);
         }
 
