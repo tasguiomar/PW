@@ -8,9 +8,9 @@
 
     <h2 style="margin-left:15px">Lista de Serviços</h2>
 
-    <p style="margin-left:15px">
+    @*<p style="margin-left:15px">
         @Html.ActionLink("Criar Serviço", "Create")
-    </p>
+    </p>*@
     <hr />
     <table class="table">
         <tr class="cabecalho">
@@ -38,16 +38,25 @@
                 @Html.DisplayFor(modelItem => item.ServicosDescricao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ServicosPreco)
+                @Html.DisplayFor(modelItem => item.ServicosPreco) €
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ServicosTipo)
             </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.ServicoID }) |
-                @Html.ActionLink("Detalhes", "Details", new { id=item.ServicoID }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id=item.ServicoID })
-            </td>
+            @if (@ViewBag.instituicao == item.InstituicaoID.ToString())
+            {
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ServicoID }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.ServicoID }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ServicoID }) 
+                </td>
+            }
+            @if (@ViewBag.instituicao != item.InstituicaoID.ToString())
+            {
+                <td>
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.ServicoID })
+                </td>
+            }
         </tr>
     }
 

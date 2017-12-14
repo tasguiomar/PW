@@ -15,6 +15,7 @@ namespace SpacesForChildren.Models
         public string AnuncioTitulo { get; set; }
         [Display(Name = "Descricao: ")]
         public string AnuncioDescricao { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Data: ")]
         public DateTime? AnuncioData { get; set; }
         [ForeignKey("Instituicao")]

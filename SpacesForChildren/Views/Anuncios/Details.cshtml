@@ -56,7 +56,15 @@
     </div>
     <hr />
     <p>
-        @Html.ActionLink("Editar", "Edit", new { id = Model.AnuncioID }) |
+        @if (@ViewBag.instituicao == Model.InstituicaoID)
+        {
+            @Html.ActionLink("Editar", "Edit", new { id = Model.AnuncioID })
+        }
+        @if (@ViewBag.instituicao != Model.InstituicaoID)
+        {
+            @Html.ActionLink("Página Principal", "../Home/Index")
+        }
+        |
         @Html.ActionLink("Voltar", "Index")
     </p>
 </div>

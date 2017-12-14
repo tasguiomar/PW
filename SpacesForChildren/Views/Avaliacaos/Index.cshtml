@@ -6,13 +6,13 @@
 
 <div class="box">
 
-    <h2 style="margin-left:15px">Instituições</h2>
+    <h2 style="margin-left:15px">Avaliações</h2>
 
-    <p style="margin-left:15px">
+    @*<p style="margin-left:15px">
         @Html.ActionLink("Avaliar Serviço", "Create")
-    </p>
+    </p>*@
     <table class="table">
-        <tr>
+        <tr class="cabecalho">
             <th>
                 @Html.DisplayNameFor(model => model.Pai.PaisNome)
             </th>
@@ -54,11 +54,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AvaliacaoGeral)
             </td>
-            <td>
+            @*<td>
                 @Html.ActionLink("Editar", "Edit", new { id=item.AvaliacaoID }) |
                 @Html.ActionLink("Detalhes", "Details", new { id=item.AvaliacaoID }) |
                 @Html.ActionLink("Eliminar", "Delete", new { id=item.AvaliacaoID })
-            </td>
+            </td>*@
         </tr>
     }
 

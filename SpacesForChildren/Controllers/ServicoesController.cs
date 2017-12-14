@@ -20,6 +20,12 @@ namespace SpacesForChildren.Controllers
         public ActionResult Index()
         {
             var servicos = db.Servicos.Include(s => s.Instituicao);
+            var user = User.Identity.GetUserName();
+            var userId = db.Instituicoes
+                .Where(m => m.InstituicaoEmail == user)
+                .Select(m => m.InstituicaoID)
+                .SingleOrDefault();
+            ViewBag.instituicao = userId.ToString();
             return View(servicos.ToList());
         }
 
@@ -35,14 +41,18 @@ namespace SpacesForChildren.Controllers
             {
                 return HttpNotFound();
             }
+            var user = User.Identity.GetUserName();
+            var userId = db.Instituicoes
+                .Where(m => m.InstituicaoEmail == user)
+                .Select(m => m.InstituicaoID)
+                .SingleOrDefault();
+            ViewBag.instituicao = userId.ToString();
             return View(servico);
         }
 
         // GET: Servicoes/Create
         public ActionResult Create()
         {
-            //var userId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
-            //ViewBag.instId = 1;
             return View();
         }
 
@@ -66,8 +76,6 @@ namespace SpacesForChildren.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            //ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", servico.InstituicaoID);
             
             return View(servico);
         }
@@ -97,11 +105,17 @@ namespace SpacesForChildren.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = User.Identity.GetUserName();
+                var userId = db.Instituicoes
+                    .Where(m => m.InstituicaoEmail == user)
+                    .Select(m => m.InstituicaoID)
+                    .SingleOrDefault();
+
+                servico.InstituicaoID = userId;
                 db.Entry(servico).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", servico.InstituicaoID);
             return View(servico);
         }
 

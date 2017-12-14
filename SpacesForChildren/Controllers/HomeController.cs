@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using Microsoft.AspNet.Identity;
 
 namespace SpacesForChildren.Controllers
 {
@@ -11,6 +12,7 @@ namespace SpacesForChildren.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.user = User.Identity.GetUserName();
             return View();
         }
 

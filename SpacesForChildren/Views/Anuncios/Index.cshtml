@@ -8,9 +8,9 @@
 
     <h2 style="margin-left:15px">Anúncios</h2>
 
-    <p style="margin-left:15px">
+    @*<p style="margin-left:15px">
         @Html.ActionLink("Criar Anúncio", "Create")
-    </p>
+    </p>*@
     <table class="table">
         <tr class="cabecalho">
             <th>
@@ -48,11 +48,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AnuncioData)
             </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.AnuncioID }) |
-                @Html.ActionLink("Detalhes", "Details", new { id=item.AnuncioID }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id=item.AnuncioID })
-            </td>
+            @if (@ViewBag.instituicao == item.InstituicaoID)
+            {
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.AnuncioID }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.AnuncioID }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.AnuncioID })
+                </td>
+            }
+            @if (@ViewBag.instituicao != item.InstituicaoID)
+            {
+                <td>
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.AnuncioID })
+                </td>
+            }
         </tr>
     }
 

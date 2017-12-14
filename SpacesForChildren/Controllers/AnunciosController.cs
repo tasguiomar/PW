@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SpacesForChildren.Models;
+using Microsoft.AspNet.Identity;
 
 namespace SpacesForChildren.Controllers
 {
@@ -17,6 +18,12 @@ namespace SpacesForChildren.Controllers
         // GET: Anuncios
         public ActionResult Index()
         {
+            var user = User.Identity.GetUserName();
+            var userId = db.Instituicoes
+                .Where(m => m.InstituicaoEmail == user)
+                .Select(m => m.InstituicaoID)
+                .SingleOrDefault();
+            ViewBag.instituicao = userId;
             var anuncios = db.Anuncios.Include(a => a.Instituicao).Include(a => a.Servico);
             return View(anuncios.ToList());
         }
@@ -33,14 +40,26 @@ namespace SpacesForChildren.Controllers
             {
                 return HttpNotFound();
             }
+            var user = User.Identity.GetUserName();
+            var userId = db.Instituicoes
+                .Where(m => m.InstituicaoEmail == user)
+                .Select(m => m.InstituicaoID)
+                .SingleOrDefault();
+            ViewBag.instituicao = userId;
             return View(anuncio);
         }
 
         // GET: Anuncios/Create
         public ActionResult Create()
         {
+            var user = User.Identity.GetUserName();
+            var userId = db.Instituicoes
+                .Where(m => m.InstituicaoEmail == user)
+                .Select(m => m.InstituicaoID)
+                .SingleOrDefault();
+
             ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome");
-            ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao");
+            ViewBag.ServicoID = new SelectList(db.Servicos.Where(x => x.InstituicaoID == userId), "ServicoID", "ServicosDescricao");
             return View();
         }
 
@@ -53,6 +72,13 @@ namespace SpacesForChildren.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = User.Identity.GetUserName();
+                var userId = db.Instituicoes
+                    .Where(m => m.InstituicaoEmail == user)
+                    .Select(m => m.InstituicaoID)
+                    .SingleOrDefault();
+
+                anuncio.InstituicaoID = userId;
                 db.Anuncios.Add(anuncio);
                 db.SaveChanges();
                 return RedirectToAction("Index");
