@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SpacesForChildren.Models;
+using Microsoft.AspNet.Identity;
 
 namespace SpacesForChildren.Controllers
 {
@@ -50,9 +51,10 @@ namespace SpacesForChildren.Controllers
         {
             if (ModelState.IsValid)
             {
+                pai.PaisEmail = User.Identity.GetUserName();
                 db.Pais.Add(pai);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Home/Index");
             }
 
             return View(pai);

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SpacesForChildren.Models;
+using Microsoft.AspNet.Identity;
 
 namespace SpacesForChildren.Controllers
 {
@@ -39,8 +40,15 @@ namespace SpacesForChildren.Controllers
         // GET: Pedidoes/Create
         public ActionResult Create()
         {
+            var user = User.Identity.GetUserName();
+            var userId = db.Pais
+                .Where(m => m.PaisEmail == user)
+                .Select(m => m.PaiID)
+                .SingleOrDefault();
+            
+            ViewBag.PaiID = userId;
             ViewBag.AnuncioID = new SelectList(db.Anuncios, "AnuncioID", "AnuncioTitulo");
-            ViewBag.RespostaID = new SelectList(db.Respostas, "RespostaID", "RespostaID");
+            ViewBag.RespostaID = null;
             return View();
         }
 

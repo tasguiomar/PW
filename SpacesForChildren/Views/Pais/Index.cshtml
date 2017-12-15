@@ -48,11 +48,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PaisEmail)
             </td>
+            @if (this.User.IsInRole("Admin"))
+            {
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.PaiID }) |
-                @Html.ActionLink("Detalhes", "Details", new { id=item.PaiID }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id=item.PaiID })
+                @Html.ActionLink("Detalhes", "Details", new { id = item.PaiID }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.PaiID })
             </td>
+            }
         </tr>
     }
 

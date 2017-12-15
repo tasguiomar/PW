@@ -10,6 +10,9 @@ using System.Web.Mvc;
 using SpacesForChildren.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Web.Security;
 
 namespace SpacesForChildren.Controllers
 {
@@ -124,10 +127,21 @@ namespace SpacesForChildren.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Instituicao instituicao = db.Instituicoes.Find(id);
-            db.Instituicoes.Remove(instituicao);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            //A FUNCIONAR
+            //Instituicao instituicao = db.Instituicoes.Find(id);
+            //db.Instituicoes.Remove(instituicao);
+            //using (var db2 = new ApplicationDbContext())
+            //{
+
+            //    var user = db2.Users.Find(User.Identity.GetUserId());
+            //    db2.Users.Remove(user);
+            //    db2.SaveChanges();
+            //}
+
+            //db.SaveChanges();
+
+            //EFETUAR O LOGOFF
+            return RedirectToAction("../Account/LogOff", "Account");
         }
 
         protected override void Dispose(bool disposing)

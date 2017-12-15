@@ -31,7 +31,8 @@
             <th></th>
         </tr>
 
-    @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Instituicao.InstituicaoNome)
@@ -56,12 +57,24 @@
                     @Html.ActionLink("Eliminar", "Delete", new { id = item.AnuncioID })
                 </td>
             }
-            @if (@ViewBag.instituicao != item.InstituicaoID)
+            else
             {
-                <td>
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.AnuncioID })
-                </td>
+                if (this.User.IsInRole("Instituição"))
+                {
+                    <td>
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.AnuncioID })
+                    </td>
+                }
+                if (this.User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.AnuncioID }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.AnuncioID })
+                    </td>
+                }
             }
+
+
         </tr>
     }
 

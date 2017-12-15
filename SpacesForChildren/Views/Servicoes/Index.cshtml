@@ -51,11 +51,21 @@
                     @Html.ActionLink("Eliminar", "Delete", new { id = item.ServicoID }) 
                 </td>
             }
-            @if (@ViewBag.instituicao != item.InstituicaoID.ToString())
+            else
             {
-                <td>
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.ServicoID })
-                </td>
+                if (this.User.IsInRole("Instituição"))
+                {
+                    <td>
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.ServicoID })
+                    </td>
+                }
+                if (this.User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.ServicoID }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.ServicoID })
+                    </td>
+                }
             }
         </tr>
     }

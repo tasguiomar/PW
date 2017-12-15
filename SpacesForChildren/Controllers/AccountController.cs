@@ -182,7 +182,7 @@ namespace SpacesForChildren.Controllers
                     }
                     else if (conta == "Pais")
                     {
-                        return View("../Pais/Create");
+                        return RedirectToAction("../Pais/Create", "Pais");
                     }
 
                     return RedirectToAction("Index", "Home");

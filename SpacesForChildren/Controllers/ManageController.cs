@@ -13,6 +13,7 @@ namespace SpacesForChildren.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        private SFCContext db = new SFCContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -333,7 +334,18 @@ namespace SpacesForChildren.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        public ActionResult Elimina()
+        {
+            var user = User.Identity.GetUserName();
+            var userId = db.Instituicoes
+                .Where(m => m.InstituicaoEmail == user)
+                .Select(m => m.InstituicaoID)
+                .SingleOrDefault();
+
+            return RedirectToAction("Delete", "Instituicaos", new { id = userId });
+        }
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
