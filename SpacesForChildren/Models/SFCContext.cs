@@ -20,5 +20,6 @@ namespace SpacesForChildren.Models
         public DbSet<Avaliacao> Avaliacoes { get; set; }
         public DbSet<Resposta> Respostas { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
+
     }
 }

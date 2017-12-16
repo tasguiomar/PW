@@ -127,21 +127,26 @@ namespace SpacesForChildren.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            //A FUNCIONAR
-            //Instituicao instituicao = db.Instituicoes.Find(id);
-            //db.Instituicoes.Remove(instituicao);
-            //using (var db2 = new ApplicationDbContext())
-            //{
+            Instituicao instituicao = db.Instituicoes.Find(id);
+            db.Instituicoes.Remove(instituicao);
+            using (var db2 = new ApplicationDbContext())
+            {
 
-            //    var user = db2.Users.Find(User.Identity.GetUserId());
-            //    db2.Users.Remove(user);
-            //    db2.SaveChanges();
-            //}
+                var user = db2.Users.Find(User.Identity.GetUserId());
+                db2.Users.Remove(user);
+                db2.SaveChanges();
+            }
 
-            //db.SaveChanges();
+            db.SaveChanges();
+            
+            var ctx = Request.GetOwinContext();
+            var authenticationManager = ctx.Authentication;
+            authenticationManager.SignOut(DefaultAuthenticationTypes.App‌​licationCookie);
 
-            //EFETUAR O LOGOFF
-            return RedirectToAction("../Account/LogOff", "Account");
+            Session.Clear();
+            Session.Abandon();
+            
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

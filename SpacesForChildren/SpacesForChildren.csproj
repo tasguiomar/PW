@@ -229,6 +229,10 @@
     <Compile Include="Migrations\201712071411504_AdicionaIdade.Designer.cs">
       <DependentUpon>201712071411504_AdicionaIdade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712161503242_cascadeTrue.cs" />
+    <Compile Include="Migrations\201712161503242_cascadeTrue.Designer.cs">
+      <DependentUpon>201712161503242_cascadeTrue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Anuncio.cs" />
@@ -371,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712071411504_AdicionaIdade.resx">
       <DependentUpon>201712071411504_AdicionaIdade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712161503242_cascadeTrue.resx">
+      <DependentUpon>201712161503242_cascadeTrue.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
