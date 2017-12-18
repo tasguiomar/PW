@@ -7,13 +7,13 @@ namespace SpacesForChildren.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class cascadeTrue : IMigrationMetadata
+    public sealed partial class ServicosInstv2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(cascadeTrue));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ServicosInstv2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712161503242_cascadeTrue"; }
+            get { return "201712181412597_ServicosInstv2"; }
         }
         
         string IMigrationMetadata.Source

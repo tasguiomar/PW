@@ -28,7 +28,6 @@ namespace SpacesForChildren.Models
         public string InstituicaoMorada { get; set; }
 
         public virtual IList<Servico> Servicos { get; set; }
-        public virtual IList<Anuncio> Anuncios { get; set; }
-        public virtual IList<Resposta> Respostas { get; set; }
+        //public virtual IList<Anuncio> Anuncios { get; set; }
     }
 }

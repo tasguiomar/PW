@@ -215,7 +215,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Controllers\PedidoesController.cs" />
-    <Compile Include="Controllers\RespostasController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ServicoesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -229,9 +228,17 @@
     <Compile Include="Migrations\201712071411504_AdicionaIdade.Designer.cs">
       <DependentUpon>201712071411504_AdicionaIdade.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712161503242_cascadeTrue.cs" />
-    <Compile Include="Migrations\201712161503242_cascadeTrue.Designer.cs">
-      <DependentUpon>201712161503242_cascadeTrue.cs</DependentUpon>
+    <Compile Include="Migrations\201712181404261_test.cs" />
+    <Compile Include="Migrations\201712181404261_test.Designer.cs">
+      <DependentUpon>201712181404261_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181410130_ServicosInst.cs" />
+    <Compile Include="Migrations\201712181410130_ServicosInst.Designer.cs">
+      <DependentUpon>201712181410130_ServicosInst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181412597_ServicosInstv2.cs" />
+    <Compile Include="Migrations\201712181412597_ServicosInstv2.Designer.cs">
+      <DependentUpon>201712181412597_ServicosInstv2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -242,7 +249,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pai.cs" />
     <Compile Include="Models\Pedido.cs" />
-    <Compile Include="Models\Resposta.cs" />
     <Compile Include="Models\Servico.cs" />
     <Compile Include="Models\SFCContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -341,11 +347,6 @@
     <Content Include="Views\Pais\Details.cshtml" />
     <Content Include="Views\Pais\Edit.cshtml" />
     <Content Include="Views\Pais\Index.cshtml" />
-    <Content Include="Views\Respostas\Create.cshtml" />
-    <Content Include="Views\Respostas\Delete.cshtml" />
-    <Content Include="Views\Respostas\Details.cshtml" />
-    <Content Include="Views\Respostas\Edit.cshtml" />
-    <Content Include="Views\Respostas\Index.cshtml" />
     <Content Include="Views\Pedidoes\Create.cshtml" />
     <Content Include="Views\Pedidoes\Delete.cshtml" />
     <Content Include="Views\Pedidoes\Details.cshtml" />
@@ -376,8 +377,14 @@
     <EmbeddedResource Include="Migrations\201712071411504_AdicionaIdade.resx">
       <DependentUpon>201712071411504_AdicionaIdade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712161503242_cascadeTrue.resx">
-      <DependentUpon>201712161503242_cascadeTrue.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712181404261_test.resx">
+      <DependentUpon>201712181404261_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181410130_ServicosInst.resx">
+      <DependentUpon>201712181410130_ServicosInst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181412597_ServicosInstv2.resx">
+      <DependentUpon>201712181412597_ServicosInstv2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -18,12 +18,12 @@ namespace SpacesForChildren.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Data: ")]
         public DateTime? AnuncioData { get; set; }
-        [ForeignKey("Instituicao")]
-        public int InstituicaoID { get; set; }
+        //[ForeignKey("Instituicao")]
+        //public int InstituicaoID { get; set; }
         [ForeignKey("Servico")]
         public int ServicoID { get; set; }
 
-        public virtual Instituicao Instituicao { get; set; }
+        //public virtual Instituicao Instituicao { get; set; }
         public virtual Servico Servico { get; set; }
         public virtual IList<Pedido> Pedido { get; set; }
     }

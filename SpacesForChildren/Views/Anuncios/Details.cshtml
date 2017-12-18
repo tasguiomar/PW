@@ -13,14 +13,6 @@
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Instituicao.InstituicaoNome)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Instituicao.InstituicaoNome)
-            </dd>
-
-            <dt>
                 @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
             </dt>
 
@@ -56,14 +48,14 @@
     </div>
     <hr />
     <p>
-        @if (@ViewBag.instituicao == Model.InstituicaoID)
+        @*@if (@ViewBag.instituicao == Model.InstituicaoID)
         {
             @Html.ActionLink("Editar", "Edit", new { id = Model.AnuncioID })
         }
         @if (@ViewBag.instituicao != Model.InstituicaoID)
         {
             @Html.ActionLink("Página Principal", "../Home/Index")
-        }
+        }*@
         |
         @Html.ActionLink("Voltar", "Index")
     </p>

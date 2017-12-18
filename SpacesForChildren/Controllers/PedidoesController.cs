@@ -18,7 +18,7 @@ namespace SpacesForChildren.Controllers
         // GET: Pedidoes
         public ActionResult Index()
         {
-            var pedidos = db.Pedidos.Include(p => p.Anuncio).Include(p => p.Resposta);
+            var pedidos = db.Pedidos.Include(p => p.Anuncio);
             return View(pedidos.ToList());
         }
 
@@ -67,7 +67,6 @@ namespace SpacesForChildren.Controllers
             }
 
             ViewBag.AnuncioID = new SelectList(db.Anuncios, "AnuncioID", "AnuncioTitulo", pedido.AnuncioID);
-            ViewBag.RespostaID = new SelectList(db.Respostas, "RespostaID", "RespostaID", pedido.RespostaID);
             return View(pedido);
         }
 
@@ -84,7 +83,6 @@ namespace SpacesForChildren.Controllers
                 return HttpNotFound();
             }
             ViewBag.AnuncioID = new SelectList(db.Anuncios, "AnuncioID", "AnuncioTitulo", pedido.AnuncioID);
-            ViewBag.RespostaID = new SelectList(db.Respostas, "RespostaID", "RespostaID", pedido.RespostaID);
             return View(pedido);
         }
 
@@ -102,7 +100,6 @@ namespace SpacesForChildren.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AnuncioID = new SelectList(db.Anuncios, "AnuncioID", "AnuncioTitulo", pedido.AnuncioID);
-            ViewBag.RespostaID = new SelectList(db.Respostas, "RespostaID", "RespostaID", pedido.RespostaID);
             return View(pedido);
         }
 

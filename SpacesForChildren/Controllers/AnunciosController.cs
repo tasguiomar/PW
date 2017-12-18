@@ -23,8 +23,10 @@ namespace SpacesForChildren.Controllers
                 .Where(m => m.InstituicaoEmail == user)
                 .Select(m => m.InstituicaoID)
                 .SingleOrDefault();
+
             ViewBag.instituicao = userId;
-            var anuncios = db.Anuncios.Include(a => a.Instituicao).Include(a => a.Servico);
+            
+            var anuncios = db.Anuncios.Include(a => a.Servico);
             return View(anuncios.ToList());
         }
 
@@ -57,8 +59,7 @@ namespace SpacesForChildren.Controllers
                 .Where(m => m.InstituicaoEmail == user)
                 .Select(m => m.InstituicaoID)
                 .SingleOrDefault();
-
-            ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome");
+            
             ViewBag.ServicoID = new SelectList(db.Servicos.Where(x => x.InstituicaoID == userId), "ServicoID", "ServicosDescricao");
             return View();
         }
@@ -78,13 +79,12 @@ namespace SpacesForChildren.Controllers
                     .Select(m => m.InstituicaoID)
                     .SingleOrDefault();
 
-                anuncio.InstituicaoID = userId;
                 db.Anuncios.Add(anuncio);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", anuncio.InstituicaoID);
+            //ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", anuncio.InstituicaoID);
             ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao", anuncio.ServicoID);
             return View(anuncio);
         }
@@ -101,7 +101,7 @@ namespace SpacesForChildren.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", anuncio.InstituicaoID);
+            //ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", anuncio.InstituicaoID);
             ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao", anuncio.ServicoID);
             return View(anuncio);
         }
@@ -119,7 +119,7 @@ namespace SpacesForChildren.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", anuncio.InstituicaoID);
+            //ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", anuncio.InstituicaoID);
             ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao", anuncio.ServicoID);
             return View(anuncio);
         }
