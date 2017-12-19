@@ -6,14 +6,14 @@
 
 <div class="box">
 
-    <h2 style="margin-left:15px;">Details</h2>
+    <h2 style="margin-left:15px;">Detalhes</h2>
 
     <div>
         <h4 style="margin-left:15px;">Anúncio: @Html.DisplayFor(model => model.AnuncioTitulo)</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
+                Serviço:
             </dt>
 
             <dd>
@@ -29,7 +29,7 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.AnuncioDescricao)
+                Anúncio:
             </dt>
 
             <dd>
@@ -48,14 +48,14 @@
     </div>
     <hr />
     <p>
-        @*@if (@ViewBag.instituicao == Model.InstituicaoID)
+        @if (@ViewBag.instituicao == Model.Servico.InstituicaoID)
         {
             @Html.ActionLink("Editar", "Edit", new { id = Model.AnuncioID })
         }
-        @if (@ViewBag.instituicao != Model.InstituicaoID)
+        @if (@ViewBag.instituicao != Model.Servico.InstituicaoID)
         {
             @Html.ActionLink("Página Principal", "../Home/Index")
-        }*@
+        }
         |
         @Html.ActionLink("Voltar", "Index")
     </p>

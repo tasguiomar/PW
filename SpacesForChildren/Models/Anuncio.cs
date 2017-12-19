@@ -15,15 +15,12 @@ namespace SpacesForChildren.Models
         public string AnuncioTitulo { get; set; }
         [Display(Name = "Descricao: ")]
         public string AnuncioDescricao { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Data: ")]
         public DateTime? AnuncioData { get; set; }
-        //[ForeignKey("Instituicao")]
-        //public int InstituicaoID { get; set; }
         [ForeignKey("Servico")]
         public int ServicoID { get; set; }
 
-        //public virtual Instituicao Instituicao { get; set; }
         public virtual Servico Servico { get; set; }
         public virtual IList<Pedido> Pedido { get; set; }
     }

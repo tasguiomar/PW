@@ -17,13 +17,13 @@
                 Instituição:
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Servico.ServicosDescricao)
+                Serviço:
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AnuncioTitulo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AnuncioDescricao)
+                Anúncio:
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AnuncioData)
@@ -35,7 +35,7 @@
     {
         <tr>
             <td>
-                @ViewBag.InstNome
+                @Html.DisplayFor(modelItem => item.Servico.Instituicao.InstituicaoNome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Servico.ServicosDescricao)
@@ -49,12 +49,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AnuncioData)
             </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.AnuncioID }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.AnuncioID }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.AnuncioID })
-            </td>
-            @*@if (@ViewBag.instituicao == item.InstituicaoID)
+            @if (@ViewBag.instituicao == item.Servico.InstituicaoID)
             {
                 <td>
                     @Html.ActionLink("Editar", "Edit", new { id = item.AnuncioID }) |
@@ -77,7 +72,7 @@
                         @Html.ActionLink("Eliminar", "Delete", new { id = item.AnuncioID })
                     </td>
                 }
-            }*@
+            }
 
 
         </tr>

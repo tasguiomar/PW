@@ -101,7 +101,6 @@ namespace SpacesForChildren.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", anuncio.InstituicaoID);
             ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao", anuncio.ServicoID);
             return View(anuncio);
         }
@@ -119,8 +118,6 @@ namespace SpacesForChildren.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //ViewBag.InstituicaoID = new SelectList(db.Instituicoes, "InstituicaoID", "InstituicaoNome", anuncio.InstituicaoID);
-            ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao", anuncio.ServicoID);
             return View(anuncio);
         }
 
