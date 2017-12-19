@@ -1,34 +1,59 @@
 ﻿@model SpacesForChildren.Models.Pedido
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes do Pedido";
 }
 
-<h2>Details</h2>
+    <div class="box">
 
-<div>
-    <h4>Pedido</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Anuncio.AnuncioTitulo)
-        </dt>
+    <h2>Detalhes</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Anuncio.AnuncioTitulo)
-        </dd>
+    <div>
+        <h4>Pedido</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Pedido:
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Resposta.RespostaID)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PedidoID)
+            </dd>
+            <dt>
+                Pai:
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Resposta.RespostaID)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Pai.PaisNome)
+            </dd>
+            <dt>
+                Anúncio:
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Anuncio.AnuncioTitulo)
+            </dd>
+            <dt>
+                Resposta:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Resposta)
+            </dd>
+
+        </dl>
+    </div>
+        <hr />
+    <p>
+        @if (@ViewBag.pai == Model.PaiID.ToString())
+        {
+            @Html.ActionLink("Editar", "Edit", new { id = Model.PedidoID })
+        }
+        @if (@ViewBag.pai != Model.PaiID.ToString())
+        {
+            @Html.ActionLink("Página Principal", "../Home/Index")
+        }
+        |
+        @Html.ActionLink("Voltar", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PedidoID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

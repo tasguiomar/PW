@@ -336,13 +336,29 @@ namespace SpacesForChildren.Controllers
 
         public ActionResult Elimina()
         {
-            var user = User.Identity.GetUserName();
-            var userId = db.Instituicoes
-                .Where(m => m.InstituicaoEmail == user)
-                .Select(m => m.InstituicaoID)
-                .SingleOrDefault();
+            if (this.User.IsInRole("Instituição")) {
+                var user = User.Identity.GetUserName();
+                var userId = db.Instituicoes
+                    .Where(m => m.InstituicaoEmail == user)
+                    .Select(m => m.InstituicaoID)
+                    .SingleOrDefault();
 
-            return RedirectToAction("Delete", "Instituicaos", new { id = userId });
+                return RedirectToAction("Delete", "Instituicaos", new { id = userId });
+            }
+            else if(this.User.IsInRole("Pais"))
+            {
+                var user = User.Identity.GetUserName();
+                var userId = db.Pais
+                    .Where(m => m.PaisEmail == user)
+                    .Select(m => m.PaiID)
+                    .SingleOrDefault();
+
+                return RedirectToAction("Delete", "Pais", new { id = userId });
+            }
+            else
+            {
+                return RedirectToAction("Index", "Pais");
+            }
         }
 
         #region Helpers

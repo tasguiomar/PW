@@ -113,8 +113,24 @@ namespace SpacesForChildren.Controllers
         {
             Pai pai = db.Pais.Find(id);
             db.Pais.Remove(pai);
+            using (var db2 = new ApplicationDbContext())
+            {
+
+                var user = db2.Users.Find(User.Identity.GetUserId());
+                db2.Users.Remove(user);
+                db2.SaveChanges();
+            }
+
             db.SaveChanges();
-            return RedirectToAction("Index");
+
+            var ctx = Request.GetOwinContext();
+            var authenticationManager = ctx.Authentication;
+            authenticationManager.SignOut(DefaultAuthenticationTypes.App‌​licationCookie);
+
+            Session.Clear();
+            Session.Abandon();
+
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

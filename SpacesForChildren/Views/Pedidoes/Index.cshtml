@@ -1,39 +1,69 @@
 ﻿@model IEnumerable<SpacesForChildren.Models.Pedido>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Pedidos";
 }
 
-<h2>Index</h2>
+<div class="box">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Anuncio.AnuncioTitulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Resposta.RespostaID)
-        </th>
-        <th></th>
-    </tr>
+    <h2>Pedidos</h2>
+    <table class="table">
+        <tr class="cabecalho">
+            <th>
+                Pedido:
+            </th>
+            <th>
+                Pai:
+            </th>
+            <th>
+                Anúncio:
+            </th>
+            <th>
+                Resposta:
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Anuncio.AnuncioTitulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Resposta.RespostaID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PedidoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PedidoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PedidoID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if ((this.User.IsInRole("Pais") && item.PaiID == @ViewBag.pai) || (this.User.IsInRole("Instituição") && ViewBag.inst == item.Anuncio.Servico.Instituicao.InstituicaoID) || (this.User.IsInRole("Admin")))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.PedidoID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pai.PaisNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anuncio.AnuncioTitulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Resposta)
+                </td>
+            }
+            @if ((this.User.IsInRole("Pais")) && item.PaiID == @ViewBag.pai) { 
+                <td>
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.PedidoID }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.PedidoID })
+                </td>
+            }
+            @if ((this.User.IsInRole("Instituição")) && @ViewBag.inst == item.Anuncio.Servico.Instituicao.InstituicaoID)
+            {
+                <td>
+                    @Html.ActionLink("Responder", "Edit", new { id = item.PedidoID })
+                </td>
+            }
+            @if ((this.User.IsInRole("Admin")))
+            {
+                <td>
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.PedidoID }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.PedidoID })
+                </td>
+            }
+        </tr>
+    }
 
-</table>
+    </table>
+
+</div>

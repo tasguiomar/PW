@@ -19,6 +19,22 @@ namespace SpacesForChildren.Controllers
         public ActionResult Index()
         {
             var pedidos = db.Pedidos.Include(p => p.Anuncio);
+            var user = User.Identity.GetUserName();
+            var userId = db.Pais
+                .Where(m => m.PaisEmail == user)
+                .Select(m => m.PaiID)
+                .SingleOrDefault();
+
+            ViewBag.pai = userId;
+
+            var user2 = User.Identity.GetUserName();
+            var userId2 = db.Instituicoes
+                .Where(m => m.InstituicaoEmail == user2)
+                .Select(m => m.InstituicaoID)
+                .SingleOrDefault();
+
+            ViewBag.inst = userId2;
+
             return View(pedidos.ToList());
         }
 
@@ -34,6 +50,12 @@ namespace SpacesForChildren.Controllers
             {
                 return HttpNotFound();
             }
+            var user = User.Identity.GetUserName();
+            var userId = db.Pais
+                .Where(m => m.PaisEmail == user)
+                .Select(m => m.PaiID)
+                .SingleOrDefault();
+            ViewBag.pai = userId.ToString();
             return View(pedido);
         }
 
@@ -61,6 +83,14 @@ namespace SpacesForChildren.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = User.Identity.GetUserName();
+                var userId = db.Pais
+                    .Where(m => m.PaisEmail == user)
+                    .Select(m => m.PaiID)
+                    .SingleOrDefault();
+
+                pedido.Resposta = Resp.Espera;
+                pedido.PaiID = userId;
                 db.Pedidos.Add(pedido);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -83,6 +113,8 @@ namespace SpacesForChildren.Controllers
                 return HttpNotFound();
             }
             ViewBag.AnuncioID = new SelectList(db.Anuncios, "AnuncioID", "AnuncioTitulo", pedido.AnuncioID);
+            ViewBag.PaiID = new SelectList(db.Pais, "PaiID", "PaisNome", pedido.PaiID);
+            ViewBag.Resposta = new SelectList(Enum.GetValues(typeof(Resp)));
             return View(pedido);
         }
 
@@ -91,7 +123,7 @@ namespace SpacesForChildren.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PedidoID,AnuncioID,RespostaID")] Pedido pedido)
+        public ActionResult Edit([Bind(Include = "PedidoID,AnuncioID,PaiID,Resposta")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {

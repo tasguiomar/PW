@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201712181412597_ServicosInstv2.Designer.cs">
       <DependentUpon>201712181412597_ServicosInstv2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712191243560_campoResposta.cs" />
+    <Compile Include="Migrations\201712191243560_campoResposta.Designer.cs">
+      <DependentUpon>201712191243560_campoResposta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Anuncio.cs" />
@@ -385,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712181412597_ServicosInstv2.resx">
       <DependentUpon>201712181412597_ServicosInstv2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712191243560_campoResposta.resx">
+      <DependentUpon>201712191243560_campoResposta.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
