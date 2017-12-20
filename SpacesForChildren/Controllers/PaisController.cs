@@ -112,23 +112,39 @@ namespace SpacesForChildren.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Pai pai = db.Pais.Find(id);
-            db.Pais.Remove(pai);
+            
             using (var db2 = new ApplicationDbContext())
             {
-
-                var user = db2.Users.Find(User.Identity.GetUserId());
-                db2.Users.Remove(user);
-                db2.SaveChanges();
+                if (this.User.IsInRole("Pais"))
+                {
+                    var user = db2.Users.Find(User.Identity.GetUserId());
+                    db2.Users.Remove(user);
+                    db2.SaveChanges();
+                }
+                else if (this.User.IsInRole("Admin"))
+                {
+                    var userID = db2.Users
+                        .Where(m => m.Email == pai.PaisEmail)
+                        .Select(m => m.Id)
+                        .SingleOrDefault();
+                    var user = db2.Users.Find(userID);
+                    db2.Users.Remove(user);
+                    db2.SaveChanges();
+                }
             }
 
+            db.Pais.Remove(pai);
             db.SaveChanges();
 
-            var ctx = Request.GetOwinContext();
-            var authenticationManager = ctx.Authentication;
-            authenticationManager.SignOut(DefaultAuthenticationTypes.App‌​licationCookie);
+            if (this.User.IsInRole("Instituição"))
+            {
+                var ctx = Request.GetOwinContext();
+                var authenticationManager = ctx.Authentication;
+                authenticationManager.SignOut(DefaultAuthenticationTypes.App‌​licationCookie);
 
-            Session.Clear();
-            Session.Abandon();
+                Session.Clear();
+                Session.Abandon();
+            }
 
             return RedirectToAction("Index", "Home");
         }

@@ -128,23 +128,39 @@ namespace SpacesForChildren.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Instituicao instituicao = db.Instituicoes.Find(id);
-            db.Instituicoes.Remove(instituicao);
+
             using (var db2 = new ApplicationDbContext())
             {
-
-                var user = db2.Users.Find(User.Identity.GetUserId());
-                db2.Users.Remove(user);
-                db2.SaveChanges();
+                if (this.User.IsInRole("Instituição"))
+                {
+                    var user = db2.Users.Find(User.Identity.GetUserId());
+                    db2.Users.Remove(user);
+                    db2.SaveChanges();
+                }
+                else if (this.User.IsInRole("Admin"))
+                {
+                    var userID = db2.Users
+                        .Where(m => m.Email == instituicao.InstituicaoEmail)
+                        .Select(m => m.Id)
+                        .SingleOrDefault();
+                    var user = db2.Users.Find(userID);
+                    db2.Users.Remove(user);
+                    db2.SaveChanges();
+                }
             }
 
+            db.Instituicoes.Remove(instituicao);
             db.SaveChanges();
-            
-            var ctx = Request.GetOwinContext();
-            var authenticationManager = ctx.Authentication;
-            authenticationManager.SignOut(DefaultAuthenticationTypes.App‌​licationCookie);
 
-            Session.Clear();
-            Session.Abandon();
+            if (this.User.IsInRole("Instituição"))
+            {
+                var ctx = Request.GetOwinContext();
+                var authenticationManager = ctx.Authentication;
+                authenticationManager.SignOut(DefaultAuthenticationTypes.App‌​licationCookie);
+
+                Session.Clear();
+                Session.Abandon();
+            }
             
             return RedirectToAction("Index", "Home");
         }

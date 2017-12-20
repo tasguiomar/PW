@@ -357,7 +357,35 @@ namespace SpacesForChildren.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Pais");
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        public ActionResult Edita()
+        {
+            if (this.User.IsInRole("Instituição"))
+            {
+                var user = User.Identity.GetUserName();
+                var userId = db.Instituicoes
+                    .Where(m => m.InstituicaoEmail == user)
+                    .Select(m => m.InstituicaoID)
+                    .SingleOrDefault();
+
+                return RedirectToAction("Edit", "Instituicaos", new { id = userId });
+            }
+            else if (this.User.IsInRole("Pais"))
+            {
+                var user = User.Identity.GetUserName();
+                var userId = db.Pais
+                    .Where(m => m.PaisEmail == user)
+                    .Select(m => m.PaiID)
+                    .SingleOrDefault();
+
+                return RedirectToAction("Edit", "Pais", new { id = userId });
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
             }
         }
 
