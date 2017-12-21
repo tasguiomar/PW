@@ -10,6 +10,7 @@ namespace SpacesForChildren.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             ViewBag.user = User.Identity.GetUserName();
@@ -29,5 +30,6 @@ namespace SpacesForChildren.Controllers
 
             return View();
         }
+        
     }
 }

@@ -14,8 +14,11 @@ namespace SpacesForChildren.Models
     {
         [Key]
         public int PedidoID { get; set; }
+        [Display(Name = "Pai: ")]
         public int PaiID { get; set; }
+        [Display(Name = "Anúncio: ")]
         public int AnuncioID { get; set; }
+        [Display(Name = "Resposta: ")]
         public Resp Resposta { get; set; }
 
         [ForeignKey("PaiID")]

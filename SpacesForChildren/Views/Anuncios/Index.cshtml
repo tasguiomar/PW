@@ -68,9 +68,10 @@
                 if (this.User.IsInRole("Admin"))
                 {
                     <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.AnuncioID }) |
                         @Html.ActionLink("Detalhes", "Details", new { id = item.AnuncioID }) |
                         @Html.ActionLink("Eliminar", "Delete", new { id = item.AnuncioID })
-                    </td>
+                </td>
                 }
             }
 

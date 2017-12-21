@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SpacesForChildren.Models;
+using System.Web.Security;
 
 namespace SpacesForChildren.Controllers
 {
@@ -161,9 +162,7 @@ namespace SpacesForChildren.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //codigo teste
                     await this.UserManager.AddToRoleAsync(user.Id, model.Name);
-                    //codigo teste
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
@@ -444,6 +443,7 @@ namespace SpacesForChildren.Controllers
 
             base.Dispose(disposing);
         }
+        
 
         #region Helpers
         // Used for XSRF protection when adding external logins
