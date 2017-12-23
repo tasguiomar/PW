@@ -16,6 +16,8 @@ namespace SpacesForChildren.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private SFCContext db = new SFCContext();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         ApplicationDbContext context;
@@ -30,6 +32,26 @@ namespace SpacesForChildren.Controllers
             UserManager = userManager;
             SignInManager = signInManager;
         }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult CheckExistingEmail(string Email)
+        {
+            try
+            {
+                return Json(!IsEmailExists(Email));
+            }
+            catch
+            {
+                return Json(false);
+            }
+
+        }
+
+        private bool IsEmailExists(string email)
+       => UserManager.FindByEmail(email) != null;
+
+
 
         public ApplicationSignInManager SignInManager
         {
@@ -142,6 +164,7 @@ namespace SpacesForChildren.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+           
             //codigo teste
             ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
             //codigo teste
@@ -160,6 +183,7 @@ namespace SpacesForChildren.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+               
                 if (result.Succeeded)
                 {
                     await this.UserManager.AddToRoleAsync(user.Id, model.Name);
@@ -202,6 +226,7 @@ namespace SpacesForChildren.Controllers
             {
                 return View("Error");
             }
+            
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
@@ -221,6 +246,7 @@ namespace SpacesForChildren.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
