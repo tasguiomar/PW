@@ -35,7 +35,7 @@ namespace SpacesForChildren.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar nova password:")]
-        [Compare("NewPassword", ErrorMessage = "A password não coincide com a de confirmação.")]
+        [Compare("NewPassword", ErrorMessage = "A password e a password de confirmação não coincidem.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -54,7 +54,7 @@ namespace SpacesForChildren.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar nova password:")]
-        [Compare("NewPassword", ErrorMessage = "A password não coincide com a de confirmação.")]
+        [Compare("NewPassword", ErrorMessage = "A password e a password de confirmação não coincidem.")]
         public string ConfirmPassword { get; set; }
     }
 

@@ -14,17 +14,25 @@ namespace SpacesForChildren.Models
 
         [Key]
         public int InstituicaoID { get; set; }
-        [Display(Name = "Tipo: ")]
+        [Display(Name = "Tipo")]
         public Tipo InstituicaoTipo { get; set; }
-        [Display(Name = "Nome: ")]
+        [Required]
+        [StringLength(100, MinimumLength = 10, ErrorMessage = "O nome da instituição deve conter entre 10 a 100 caracteres.")]
+        [Display(Name = "Nome")]
         public string InstituicaoNome { get; set; }
-        [Display(Name = "Email: ")]
+        [Display(Name = "Email")]
         public string InstituicaoEmail { get; set; }
-        [Display(Name = "Telefone: ")]
+        [Required]
+        [RegularExpression(@"\d{9}", ErrorMessage = "Número de telefone inválido.")]
+        [Display(Name = "Telefone")]
         public int InstituicaoTelefone { get; set; }
-        [Display(Name = "Cidade: ")]
+        [Required]
+        [RegularExpression(@"^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$", ErrorMessage = "Campo Cidade inválido.")]
+        [Display(Name = "Cidade")]
         public string InstituicaoCidade { get; set; }
-        [Display(Name = "Morada: ")]
+        [Required]
+        [StringLength(200, MinimumLength = 5, ErrorMessage = "O nome da instituição deve conter entre 5 a 200 caracteres.")]
+        [Display(Name = "Morada")]
         public string InstituicaoMorada { get; set; }
 
         public virtual IList<Servico> Servicos { get; set; }

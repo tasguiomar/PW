@@ -111,7 +111,7 @@ namespace SpacesForChildren.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Falha no login. Possível falha nas credenciais.");
                     return View(model);
             }
         }

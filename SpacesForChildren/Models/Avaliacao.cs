@@ -11,13 +11,21 @@ namespace SpacesForChildren.Models
     {
         [Key]
         public int AvaliacaoID { get; set; }
-        [Display(Name = "Preço: ")]
+        [Required]
+        [Range(1, 5, ErrorMessage = "O preço deve ser avaliado entre 1 a 5.")]
+        [Display(Name = "Preço")]
         public int AvaliacaoPreco { get; set; }
-        [Display(Name = "Localização: ")]
+        [Required]
+        [Range(1, 5, ErrorMessage = "A localização deve ser avaliado entre 1 a 5.")]
+        [Display(Name = "Localização")]
         public int AvaliacaoLocalizacao { get; set; }
-        [Display(Name = "Ambiente:")]
+        [Required]
+        [Range(1, 5, ErrorMessage = "O ambiente deve ser avaliado entre 1 a 5.")]
+        [Display(Name = "Ambiente")]
         public int AvaliacaoAmbiente { get; set; }
-        [Display(Name = "Geral: ")]
+        [Required]
+        [Range(1, 5, ErrorMessage = "A nota geral deve estar entre 1 a 5.")]
+        [Display(Name = "Geral")]
         public int AvaliacaoGeral { get; set; }
         [ForeignKey("Pai")]
         public int PaiID { get; set; }

@@ -10,12 +10,20 @@ namespace SpacesForChildren.Models
     {
         [Key]
         public int PaiID { get; set; }
-        [Display(Name = "Nome: ")]
+        [Required]
+        [StringLength(150, MinimumLength = 10, ErrorMessage = "O nome deve conter entre 10 a 150 caracteres.")]
+        [Display(Name = "Nome")]
         public string PaisNome { get; set; }
-        [Display(Name = "CC:  ")]
+        [Required]
+        [RegularExpression(@"\d{8}", ErrorMessage = "Número de cartão de cidadão inválido.")]
+        [Display(Name = "CC")]
         public int PaisCc { get; set; }
-        [Display(Name = "NIF: ")]
+        [Required]
+        [RegularExpression(@"\d{9}", ErrorMessage = "Número de identificação fiscal inválido.")]
+        [Display(Name = "NIF")]
         public int PaisNif { get; set; }
+        [Required]
+        [RegularExpression(@"\d{9}", ErrorMessage = "Número de telemóvel inválido.")]
         [Display(Name = "Telemóvel")]
         public int PaisTelemovel { get; set; }
         [Display(Name = "Email")]

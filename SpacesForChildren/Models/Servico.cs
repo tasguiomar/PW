@@ -13,17 +13,19 @@ namespace SpacesForChildren.Models
     {
         [Key]
         public int ServicoID { get; set; }
-        [Display(Name = "Descrição: ")]
+        [Required]
+        [StringLength(500, MinimumLength = 10, ErrorMessage = "A descrição deve conter entre 10 a 500 caracteres.")]
+        [Display(Name = "Descrição")]
         public string ServicosDescricao { get; set; }
-        [Display(Name = "Preço: ")]
+        [Required]
+        [Range(0, float.MaxValue, ErrorMessage = "O preço deve ser superior a 0.")]
+        [Display(Name = "Preço")]
         public float ServicosPreco { get; set; }
-        [Display(Name = "Tipo: ")]
+        [Required]
+        [Range(1, 10, ErrorMessage = "Escolha um tipo de serviço válido.")]
+        [Display(Name = "Tipo")]
         public TipoServ ServicosTipo { get; set; }
         public int InstituicaoID { get; set; }
-        [Display(Name = "Idade Minima: ")]
-        public int ServicosIdadeMin { get; set; }
-        [Display(Name = "Idade Máxima: ")]
-        public int ServicosIdadeMax { get; set; }
 
         [ForeignKey("InstituicaoID")]
         public virtual Instituicao Instituicao { get; set; }
