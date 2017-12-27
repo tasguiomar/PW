@@ -19,10 +19,23 @@ namespace SpacesForChildren.Controllers
         public ActionResult Index()
         {
             var user = User.Identity.GetUserName();
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             var userId = db.Instituicoes
-                .Where(m => m.InstituicaoEmail == user)
-                .Select(m => m.InstituicaoID)
-                .SingleOrDefault();
+            .Where(m => m.InstituicaoEmail == user)
+            .Select(m => m.InstituicaoID)
+            .SingleOrDefault();
 
             ViewBag.instituicao = userId;
             
@@ -43,6 +56,19 @@ namespace SpacesForChildren.Controllers
                 return HttpNotFound();
             }
             var user = User.Identity.GetUserName();
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             var userId = db.Instituicoes
                 .Where(m => m.InstituicaoEmail == user)
                 .Select(m => m.InstituicaoID)
@@ -55,6 +81,19 @@ namespace SpacesForChildren.Controllers
         public ActionResult Create()
         {
             var user = User.Identity.GetUserName();
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             var userId = db.Instituicoes
                 .Where(m => m.InstituicaoEmail == user)
                 .Select(m => m.InstituicaoID)
@@ -74,6 +113,19 @@ namespace SpacesForChildren.Controllers
             if (ModelState.IsValid)
             {
                 var user = User.Identity.GetUserName();
+
+                using (var db2 = new ApplicationDbContext())
+                {
+                    var conta = db2.Users.Find(User.Identity.GetUserId());
+                    if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                    {
+                        if (conta.EmailConfirmed == false)
+                        {
+                            return RedirectToAction("ConfirmaConta", "Home");
+                        }
+                    }
+                }
+
                 var userId = db.Instituicoes
                     .Where(m => m.InstituicaoEmail == user)
                     .Select(m => m.InstituicaoID)
@@ -101,6 +153,19 @@ namespace SpacesForChildren.Controllers
             {
                 return HttpNotFound();
             }
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao", anuncio.ServicoID);
             return View(anuncio);
         }
@@ -114,6 +179,19 @@ namespace SpacesForChildren.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                using (var db2 = new ApplicationDbContext())
+                {
+                    var conta = db2.Users.Find(User.Identity.GetUserId());
+                    if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                    {
+                        if (conta.EmailConfirmed == false)
+                        {
+                            return RedirectToAction("ConfirmaConta", "Home");
+                        }
+                    }
+                }
+
                 db.Entry(anuncio).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -133,6 +211,19 @@ namespace SpacesForChildren.Controllers
             {
                 return HttpNotFound();
             }
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             return View(anuncio);
         }
 
@@ -142,6 +233,19 @@ namespace SpacesForChildren.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Anuncio anuncio = db.Anuncios.Find(id);
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             db.Anuncios.Remove(anuncio);
             db.SaveChanges();
             return RedirectToAction("Index");

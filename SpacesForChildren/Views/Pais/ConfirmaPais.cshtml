@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SpacesForChildren.Models.Pai>
+
+@{
+    ViewBag.Title = "Lista de Pais";
+}
+
+<div class="box">
+
+    <h2 style="margin-left:15px">Confirmação de Pais</h2>
+
+    <table class="table">
+        <tr class="cabecalho">
+            <th>
+                @Html.DisplayNameFor(model => model.PaisNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaisCc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaisNif)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaisTelemovel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaisEmail)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaisNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaisCc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaisNif)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaisTelemovel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaisEmail)
+                </td>
+                @if (this.User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Confirmar", "ConfPai", new { email = item.PaisEmail })
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+</div>

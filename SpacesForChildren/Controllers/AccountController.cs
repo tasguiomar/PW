@@ -188,6 +188,8 @@ namespace SpacesForChildren.Controllers
                 {
                     await this.UserManager.AddToRoleAsync(user.Id, model.Name);
 
+                    user.EmailConfirmed = false;
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SpacesForChildren.Models.Instituicao>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Lista de Instituições";
+}
+<div class="box">
+
+    <h2 style="margin-left:15px">Confirmação de Instituições</h2>
+
+    <hr />
+    <table class="table">
+        <tr class="cabecalho">
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoTipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoTelefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoCidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoMorada)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstituicaoTipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstituicaoNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstituicaoEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstituicaoTelefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstituicaoCidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstituicaoMorada)
+                </td>
+                @if (this.User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Confirmar", "ConfInst", new { email = item.InstituicaoEmail })
+                    </td>
+                }
+            </tr>
+        }
+
+
+    </table>
+
+</div>

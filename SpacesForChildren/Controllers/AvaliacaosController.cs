@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SpacesForChildren.Models;
+using Microsoft.AspNet.Identity;
 
 namespace SpacesForChildren.Controllers
 {
@@ -17,6 +18,18 @@ namespace SpacesForChildren.Controllers
         // GET: Avaliacaos
         public ActionResult Index()
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             var avaliacoes = db.Avaliacoes.Include(a => a.Pai).Include(a => a.Servico);
             return View(avaliacoes.ToList());
         }
@@ -33,12 +46,37 @@ namespace SpacesForChildren.Controllers
             {
                 return HttpNotFound();
             }
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             return View(avaliacao);
         }
 
         // GET: Avaliacaos/Create
         public ActionResult Create()
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             ViewBag.PaiID = new SelectList(db.Pais, "PaiID", "PaisNome");
             ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao");
             return View();
@@ -53,6 +91,18 @@ namespace SpacesForChildren.Controllers
         {
             if (ModelState.IsValid)
             {
+                using (var db2 = new ApplicationDbContext())
+                {
+                    var conta = db2.Users.Find(User.Identity.GetUserId());
+                    if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                    {
+                        if (conta.EmailConfirmed == false)
+                        {
+                            return RedirectToAction("ConfirmaConta", "Home");
+                        }
+                    }
+                }
+
                 db.Avaliacoes.Add(avaliacao);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -75,6 +125,19 @@ namespace SpacesForChildren.Controllers
             {
                 return HttpNotFound();
             }
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             ViewBag.PaiID = new SelectList(db.Pais, "PaiID", "PaisNome", avaliacao.PaiID);
             ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao", avaliacao.ServicoID);
             return View(avaliacao);
@@ -89,6 +152,19 @@ namespace SpacesForChildren.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                using (var db2 = new ApplicationDbContext())
+                {
+                    var conta = db2.Users.Find(User.Identity.GetUserId());
+                    if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                    {
+                        if (conta.EmailConfirmed == false)
+                        {
+                            return RedirectToAction("ConfirmaConta", "Home");
+                        }
+                    }
+                }
+
                 db.Entry(avaliacao).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -110,6 +186,19 @@ namespace SpacesForChildren.Controllers
             {
                 return HttpNotFound();
             }
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             return View(avaliacao);
         }
 
@@ -119,6 +208,19 @@ namespace SpacesForChildren.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Avaliacao avaliacao = db.Avaliacoes.Find(id);
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             db.Avaliacoes.Remove(avaliacao);
             db.SaveChanges();
             return RedirectToAction("Index");

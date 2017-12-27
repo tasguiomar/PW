@@ -19,6 +19,18 @@ namespace SpacesForChildren.Controllers
         // GET: Servicoes
         public ActionResult Index()
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             var servicos = db.Servicos.Include(s => s.Instituicao);
             var user = User.Identity.GetUserName();
             var userId = db.Instituicoes
@@ -32,6 +44,19 @@ namespace SpacesForChildren.Controllers
         // GET: Servicoes/Details/5
         public ActionResult Details(int? id)
         {
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -53,6 +78,18 @@ namespace SpacesForChildren.Controllers
         // GET: Servicoes/Create
         public ActionResult Create()
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             return View();
         }
 
@@ -63,6 +100,18 @@ namespace SpacesForChildren.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ServicoID,ServicosDescricao,ServicosPreco,ServicosTipo,InstituicaoID")] Servico servico)
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 var user = User.Identity.GetUserName();
@@ -83,6 +132,18 @@ namespace SpacesForChildren.Controllers
         // GET: Servicoes/Edit/5
         public ActionResult Edit(int? id)
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -103,6 +164,18 @@ namespace SpacesForChildren.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ServicoID,ServicosDescricao,ServicosPreco,ServicosTipo,InstituicaoID")] Servico servico)
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(servico).State = EntityState.Modified;
@@ -115,6 +188,18 @@ namespace SpacesForChildren.Controllers
         // GET: Servicoes/Delete/5
         public ActionResult Delete(int? id)
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -132,6 +217,18 @@ namespace SpacesForChildren.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             Servico servico = db.Servicos.Find(id);
             db.Servicos.Remove(servico);
             db.SaveChanges();

@@ -17,6 +17,11 @@ namespace SpacesForChildren.Controllers
             return View();
         }
 
+        public ActionResult ConfirmaConta()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

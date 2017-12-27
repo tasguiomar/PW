@@ -20,6 +20,19 @@ namespace SpacesForChildren.Controllers
         {
             var pedidos = db.Pedidos.Include(p => p.Anuncio);
             var user = User.Identity.GetUserName();
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             var userId = db.Pais
                 .Where(m => m.PaisEmail == user)
                 .Select(m => m.PaiID)
@@ -41,6 +54,19 @@ namespace SpacesForChildren.Controllers
         // GET: Pedidoes/Details/5
         public ActionResult Details(int? id)
         {
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -62,6 +88,19 @@ namespace SpacesForChildren.Controllers
         // GET: Pedidoes/Create
         public ActionResult Create()
         {
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             var user = User.Identity.GetUserName();
             var userId = db.Pais
                 .Where(m => m.PaisEmail == user)
@@ -81,6 +120,18 @@ namespace SpacesForChildren.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PedidoID,AnuncioID,RespostaID")] Pedido pedido)
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 var user = User.Identity.GetUserName();
@@ -103,6 +154,19 @@ namespace SpacesForChildren.Controllers
         // GET: Pedidoes/Edit/5
         public ActionResult Edit(int? id)
         {
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -125,6 +189,19 @@ namespace SpacesForChildren.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PedidoID,AnuncioID,PaiID,Resposta")] Pedido pedido)
         {
+
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(pedido).State = EntityState.Modified;
@@ -138,6 +215,18 @@ namespace SpacesForChildren.Controllers
         // GET: Pedidoes/Delete/5
         public ActionResult Delete(int? id)
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -155,6 +244,18 @@ namespace SpacesForChildren.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            using (var db2 = new ApplicationDbContext())
+            {
+                var conta = db2.Users.Find(User.Identity.GetUserId());
+                if (this.User.IsInRole("Instituição") || this.User.IsInRole("Pais"))
+                {
+                    if (conta.EmailConfirmed == false)
+                    {
+                        return RedirectToAction("ConfirmaConta", "Home");
+                    }
+                }
+            }
+
             Pedido pedido = db.Pedidos.Find(id);
             db.Pedidos.Remove(pedido);
             db.SaveChanges();

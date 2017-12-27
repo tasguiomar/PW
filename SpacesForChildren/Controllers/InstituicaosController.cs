@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SpacesForChildren.Controllers
 {
@@ -163,6 +164,45 @@ namespace SpacesForChildren.Controllers
             }
             
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult ConfirmaInstituicao()
+        {
+            List<Instituicao> instituicoes = new List<Instituicao>();
+            foreach (var element in db.Instituicoes)
+            {
+                using (var db2 = new ApplicationDbContext())
+                {
+                    var userID = db2.Users
+                        .Where(m => m.Email == element.InstituicaoEmail)
+                        .Select(m => m.Id)
+                        .SingleOrDefault();
+                    var user = db2.Users.Find(userID);
+
+                    if (user.EmailConfirmed == false)
+                    {
+                        instituicoes.Add(element);
+                    }
+                }
+            }
+
+            return View(instituicoes);
+        }
+
+        public ActionResult ConfInst(string email)
+        {
+            var context = new ApplicationDbContext();
+            foreach (var element in context.Users)
+            {
+                if (element.Email == email)
+                {
+                    element.EmailConfirmed = true;
+                }
+            }
+
+            context.SaveChanges();
+
+            return View("ConfirmaInstituicao");
         }
 
         protected override void Dispose(bool disposing)
