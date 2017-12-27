@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -10,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SpacesForChildren.Models;
 using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SpacesForChildren.Controllers
 {
@@ -186,9 +188,11 @@ namespace SpacesForChildren.Controllers
                
                 if (result.Succeeded)
                 {
-                    await this.UserManager.AddToRoleAsync(user.Id, model.Name);
+                    string conta = Request.Form["Name"].ToString();
 
                     user.EmailConfirmed = false;
+
+                    await this.UserManager.AddToRoleAsync(user.Id, model.Name);
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
@@ -197,8 +201,6 @@ namespace SpacesForChildren.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    string conta = Request.Form["Name"].ToString();
 
                     if (conta == "Instituição")
                     {
@@ -451,6 +453,7 @@ namespace SpacesForChildren.Controllers
         {
             return View();
         }
+        
 
         protected override void Dispose(bool disposing)
         {
