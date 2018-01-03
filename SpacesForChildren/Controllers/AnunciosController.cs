@@ -11,13 +11,12 @@ using Microsoft.AspNet.Identity;
 
 namespace SpacesForChildren.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    [Authorize(Roles = "Instituição")]
     public class AnunciosController : Controller
     {
         private SFCContext db = new SFCContext();
 
         // GET: Anuncios
+        [Authorize]
         public ActionResult Index()
         {
             var user = User.Identity.GetUserName();
@@ -46,6 +45,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Anuncios/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -80,6 +80,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Anuncios/Create
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Create()
         {
             var user = User.Identity.GetUserName();
@@ -144,7 +146,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Anuncios/Edit/5
-       
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -204,8 +207,9 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Anuncios/Delete/5
-        
 
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
