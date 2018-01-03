@@ -88,7 +88,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Pedidoes/Create
-        [Authorize]
+        [Authorize(Roles = "Pais, Admin")]
         public ActionResult Create()
         {
 
@@ -217,7 +217,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Pedidoes/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Pais, Admin")]
         public ActionResult Delete(int? id)
         {
             using (var db2 = new ApplicationDbContext())

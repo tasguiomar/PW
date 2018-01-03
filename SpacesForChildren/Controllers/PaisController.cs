@@ -16,7 +16,7 @@ namespace SpacesForChildren.Controllers
         private SFCContext db = new SFCContext();
 
         // GET: Pais
-        [Authorize(Roles = "Admin, Instituição")]
+        [Authorize(Roles = "Pais, Admin")]
         public ActionResult Index()
         {
             return View(db.Pais.ToList());

@@ -80,8 +80,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Anuncios/Create
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Instituição")]
+        [Authorize(Roles = "Instituição, Admin")]
         public ActionResult Create()
         {
             var user = User.Identity.GetUserName();
@@ -146,8 +145,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Anuncios/Edit/5
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Instituição")]
+        [Authorize(Roles = "Instituição, Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -207,9 +205,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Anuncios/Delete/5
-        
-             [Authorize(Roles = "Admin")]
-    [Authorize(Roles = "Instituição")]
+
+        [Authorize(Roles = "Instituição, Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

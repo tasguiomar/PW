@@ -16,6 +16,7 @@ namespace SpacesForChildren.Controllers
         private SFCContext db = new SFCContext();
 
         // GET: Avaliacaos
+        [Authorize]
         public ActionResult Index()
         {
             using (var db2 = new ApplicationDbContext())
@@ -35,6 +36,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Avaliacaos/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -63,7 +65,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Avaliacaos/Create
-        [Authorize(Roles = "Pais")]
+        [Authorize(Roles = "Pais, Admin")]
         public ActionResult Create()
         {
             using (var db2 = new ApplicationDbContext())
@@ -88,7 +90,7 @@ namespace SpacesForChildren.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Instituição, Admin")]
+        [Authorize(Roles = "Pais, Admin")]
         public ActionResult Create([Bind(Include = "AvaliacaoID,AvaliacaoPreco,AvaliacaoLocalizacao,AvaliacaoAmbiente,AvaliacaoGeral,PaiID,ServicoID")] Avaliacao avaliacao)
         {
             if (ModelState.IsValid)
@@ -116,7 +118,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Avaliacaos/Edit/5
-        [Authorize(Roles = "Pais")]
+        [Authorize(Roles = "Pais, Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)

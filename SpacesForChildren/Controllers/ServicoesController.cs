@@ -17,7 +17,7 @@ namespace SpacesForChildren.Controllers
         private SFCContext db = new SFCContext();
 
         // GET: Servicoes
-        [Authorize]
+        [Authorize(Roles = "Instituição, Admin")]
         public ActionResult Index()
         {
             using (var db2 = new ApplicationDbContext())
@@ -43,7 +43,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Servicoes/Details/5
-        [Authorize]
+        [Authorize(Roles = "Instituição, Admin")]
         public ActionResult Details(int? id)
         {
 
