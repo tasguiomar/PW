@@ -169,7 +169,7 @@ namespace SpacesForChildren.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize(Roles = "Admin")]
+        
         public ActionResult ConfirmaInstituicao()
         {
             List<Instituicao> instituicoes = new List<Instituicao>();
@@ -192,9 +192,10 @@ namespace SpacesForChildren.Controllers
 
             return View(instituicoes);
         }
-        [Authorize(Roles = "Admin")]
+
         public ActionResult ConfInst(string email)
         {
+            List<Instituicao> instituicoes = new List<Instituicao>();
             var context = new ApplicationDbContext();
             foreach (var element in context.Users)
             {
@@ -206,7 +207,7 @@ namespace SpacesForChildren.Controllers
 
             context.SaveChanges();
 
-            return View("ConfirmaInstituicao");
+            return View("ConfirmaInstituicao",instituicoes);
         }
 
         protected override void Dispose(bool disposing)

@@ -181,6 +181,7 @@ namespace SpacesForChildren.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult ConfPai(string email)
         {
+            List<Pai> pais = new List<Pai>();
             var context = new ApplicationDbContext();
             foreach (var element in context.Users)
             {
@@ -192,7 +193,7 @@ namespace SpacesForChildren.Controllers
 
             context.SaveChanges();
 
-            return View("ConfirmaPais");
+            return View("ConfirmaPais",pais);
         }
 
         protected override void Dispose(bool disposing)
