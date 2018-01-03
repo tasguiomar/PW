@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity;
 
 namespace SpacesForChildren.Controllers
 {
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Instituição")]
     public class AnunciosController : Controller
     {
         private SFCContext db = new SFCContext();
@@ -142,6 +144,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Anuncios/Edit/5
+       
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -175,6 +178,7 @@ namespace SpacesForChildren.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+       
         public ActionResult Edit([Bind(Include = "AnuncioID,AnuncioTitulo,AnuncioDescricao,AnuncioData,InstituicaoID,ServicoID")] Anuncio anuncio)
         {
             if (ModelState.IsValid)
@@ -200,6 +204,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Anuncios/Delete/5
+        
+
         public ActionResult Delete(int? id)
         {
             if (id == null)

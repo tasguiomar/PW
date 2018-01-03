@@ -54,6 +54,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Instituicaos/Create
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Create()
         {
             return View();
@@ -78,6 +80,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Instituicaos/Edit/5
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -109,6 +113,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Instituicaos/Delete/5
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -166,6 +172,7 @@ namespace SpacesForChildren.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult ConfirmaInstituicao()
         {
             List<Instituicao> instituicoes = new List<Instituicao>();
@@ -188,7 +195,7 @@ namespace SpacesForChildren.Controllers
 
             return View(instituicoes);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult ConfInst(string email)
         {
             var context = new ApplicationDbContext();

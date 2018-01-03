@@ -16,12 +16,16 @@ namespace SpacesForChildren.Controllers
         private SFCContext db = new SFCContext();
 
         // GET: Pais
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Index()
         {
             return View(db.Pais.ToList());
         }
 
         // GET: Pais/Details/5
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +41,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Pais/Create
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Pais")]
         public ActionResult Create()
         {
             return View();
@@ -61,6 +67,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Pais/Edit/5
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Pais")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -92,6 +100,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Pais/Delete/5
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Pais")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -149,6 +159,7 @@ namespace SpacesForChildren.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult ConfirmaPais()
         {
             List<Pai> pais = new List<Pai>();
@@ -172,6 +183,7 @@ namespace SpacesForChildren.Controllers
             return View(pais);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult ConfPai(string email)
         {
             var context = new ApplicationDbContext();

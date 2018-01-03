@@ -63,6 +63,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Avaliacaos/Create
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Create()
         {
             using (var db2 = new ApplicationDbContext())
@@ -87,6 +89,8 @@ namespace SpacesForChildren.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Create([Bind(Include = "AvaliacaoID,AvaliacaoPreco,AvaliacaoLocalizacao,AvaliacaoAmbiente,AvaliacaoGeral,PaiID,ServicoID")] Avaliacao avaliacao)
         {
             if (ModelState.IsValid)
@@ -114,6 +118,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Avaliacaos/Edit/5
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -148,6 +154,8 @@ namespace SpacesForChildren.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Edit([Bind(Include = "AvaliacaoID,AvaliacaoPreco,AvaliacaoLocalizacao,AvaliacaoAmbiente,AvaliacaoGeral,PaiID,ServicoID")] Avaliacao avaliacao)
         {
             if (ModelState.IsValid)
@@ -175,6 +183,8 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Avaliacaos/Delete/5
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -205,6 +215,8 @@ namespace SpacesForChildren.Controllers
         // POST: Avaliacaos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Instituição")]
         public ActionResult DeleteConfirmed(int id)
         {
             Avaliacao avaliacao = db.Avaliacoes.Find(id);
