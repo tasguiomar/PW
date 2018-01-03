@@ -17,6 +17,7 @@ namespace SpacesForChildren.Controllers
         private SFCContext db = new SFCContext();
 
         // GET: Servicoes
+        [Authorize]
         public ActionResult Index()
         {
             using (var db2 = new ApplicationDbContext())
@@ -42,6 +43,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Servicoes/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
 
@@ -76,6 +78,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Servicoes/Create
+        [Authorize(Roles = "Admin, Instituição")]
         public ActionResult Create()
         {
             using (var db2 = new ApplicationDbContext())
@@ -130,6 +133,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Servicoes/Edit/5
+        [Authorize(Roles = "Admin, Instituição")]
         public ActionResult Edit(int? id)
         {
             using (var db2 = new ApplicationDbContext())
@@ -186,6 +190,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Servicoes/Delete/5
+        [Authorize(Roles = "Admin, Instituição")]
         public ActionResult Delete(int? id)
         {
             using (var db2 = new ApplicationDbContext())

@@ -207,9 +207,9 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Anuncios/Delete/5
-
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Instituição")]
+        
+             [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Instituição")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

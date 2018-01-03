@@ -16,6 +16,7 @@ namespace SpacesForChildren.Controllers
         private SFCContext db = new SFCContext();
 
         // GET: Pedidoes
+        [Authorize]
         public ActionResult Index()
         {
             var pedidos = db.Pedidos.Include(p => p.Anuncio);
@@ -52,6 +53,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Pedidoes/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
 
@@ -86,6 +88,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Pedidoes/Create
+        [Authorize]
         public ActionResult Create()
         {
 
@@ -152,6 +155,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Pedidoes/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
 
@@ -213,6 +217,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Pedidoes/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             using (var db2 = new ApplicationDbContext())
