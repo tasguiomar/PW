@@ -54,8 +54,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Instituicaos/Create
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Instituição")]
+        [Authorize(Roles = "Instituição, Admin")]
         public ActionResult Create()
         {
             return View();

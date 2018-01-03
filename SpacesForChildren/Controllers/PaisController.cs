@@ -23,7 +23,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Pais/Details/5
-        [Authorize(Roles = "Admin, Instituição")]
+        [Authorize(Roles = "Admin, Pais")]
         public ActionResult Details(int? id)
         {
             if (id == null)
