@@ -17,11 +17,11 @@ namespace SpacesForChildren.Models
         public string AnuncioTitulo { get; set; }
         [Required]
         [StringLength(500, MinimumLength = 10, ErrorMessage = "A descrição deve conter entre 10 a 500 caracteres.")]
-        [Display(Name = "Descricao")]
+        [Display(Name = "Descrição")]
         public string AnuncioDescricao { get; set; }
         [Required(ErrorMessage = "A data é obrigatória.")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Data")]
+        [Display(Name = "Data de término")]
         public DateTime? AnuncioData { get; set; }
         [ForeignKey("Servico")]
         public int ServicoID { get; set; }
