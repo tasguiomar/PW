@@ -54,7 +54,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Instituicaos/Create
-        [Authorize(Roles = "Instituição, Admin")]
+        [Autorizacao(Roles = "Instituição, Admin")]
         public ActionResult Create()
         {
             return View();
@@ -79,7 +79,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Instituicaos/Edit/5
-        [Authorize(Roles = "Instituição, Admin")]
+        [Autorizacao(Roles = "Instituição, Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -111,7 +111,7 @@ namespace SpacesForChildren.Controllers
         }
 
         // GET: Instituicaos/Delete/5
-        [Authorize(Roles = "Instituição, Admin")]
+        [Autorizacao(Roles = "Instituição, Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
