@@ -23,7 +23,7 @@ namespace SpacesForChildren.Models
         private string v;
 
         public ApplicationDbContext()
-            : base("BaseDeDados", throwIfV1Schema: false)
+            : base("SpacesForChildrenDB", throwIfV1Schema: false)
         {
         }
 

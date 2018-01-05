@@ -232,57 +232,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712071405126_ModeloInicial.cs" />
-    <Compile Include="Migrations\201712071405126_ModeloInicial.Designer.cs">
-      <DependentUpon>201712071405126_ModeloInicial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712071411504_AdicionaIdade.cs" />
-    <Compile Include="Migrations\201712071411504_AdicionaIdade.Designer.cs">
-      <DependentUpon>201712071411504_AdicionaIdade.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712181404261_test.cs" />
-    <Compile Include="Migrations\201712181404261_test.Designer.cs">
-      <DependentUpon>201712181404261_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712181410130_ServicosInst.cs" />
-    <Compile Include="Migrations\201712181410130_ServicosInst.Designer.cs">
-      <DependentUpon>201712181410130_ServicosInst.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712181412597_ServicosInstv2.cs" />
-    <Compile Include="Migrations\201712181412597_ServicosInstv2.Designer.cs">
-      <DependentUpon>201712181412597_ServicosInstv2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712191243560_campoResposta.cs" />
-    <Compile Include="Migrations\201712191243560_campoResposta.Designer.cs">
-      <DependentUpon>201712191243560_campoResposta.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712262212095_atualizacaoServicos.cs" />
-    <Compile Include="Migrations\201712262212095_atualizacaoServicos.Designer.cs">
-      <DependentUpon>201712262212095_atualizacaoServicos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712262218170_atualizacaoAnuncios.cs" />
-    <Compile Include="Migrations\201712262218170_atualizacaoAnuncios.Designer.cs">
-      <DependentUpon>201712262218170_atualizacaoAnuncios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712262243057_atualizacaoInstituicoes.cs" />
-    <Compile Include="Migrations\201712262243057_atualizacaoInstituicoes.Designer.cs">
-      <DependentUpon>201712262243057_atualizacaoInstituicoes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712262259110_atualizacaoPais.cs" />
-    <Compile Include="Migrations\201712262259110_atualizacaoPais.Designer.cs">
-      <DependentUpon>201712262259110_atualizacaoPais.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801051426117_novaConnectionString.cs" />
-    <Compile Include="Migrations\201801051426117_novaConnectionString.Designer.cs">
-      <DependentUpon>201801051426117_novaConnectionString.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801051500128_respost.cs" />
-    <Compile Include="Migrations\201801051500128_respost.Designer.cs">
-      <DependentUpon>201801051500128_respost.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801051507150_RespostaAgain.cs" />
-    <Compile Include="Migrations\201801051507150_RespostaAgain.Designer.cs">
-      <DependentUpon>201801051507150_RespostaAgain.cs</DependentUpon>
+    <Compile Include="Migrations\201801052340419_modeloInicial.cs" />
+    <Compile Include="Migrations\201801052340419_modeloInicial.Designer.cs">
+      <DependentUpon>201801052340419_modeloInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -419,44 +371,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712071405126_ModeloInicial.resx">
-      <DependentUpon>201712071405126_ModeloInicial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712071411504_AdicionaIdade.resx">
-      <DependentUpon>201712071411504_AdicionaIdade.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712181404261_test.resx">
-      <DependentUpon>201712181404261_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712181410130_ServicosInst.resx">
-      <DependentUpon>201712181410130_ServicosInst.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712181412597_ServicosInstv2.resx">
-      <DependentUpon>201712181412597_ServicosInstv2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712191243560_campoResposta.resx">
-      <DependentUpon>201712191243560_campoResposta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712262212095_atualizacaoServicos.resx">
-      <DependentUpon>201712262212095_atualizacaoServicos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712262218170_atualizacaoAnuncios.resx">
-      <DependentUpon>201712262218170_atualizacaoAnuncios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712262243057_atualizacaoInstituicoes.resx">
-      <DependentUpon>201712262243057_atualizacaoInstituicoes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712262259110_atualizacaoPais.resx">
-      <DependentUpon>201712262259110_atualizacaoPais.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801051426117_novaConnectionString.resx">
-      <DependentUpon>201801051426117_novaConnectionString.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801051500128_respost.resx">
-      <DependentUpon>201801051500128_respost.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801051507150_RespostaAgain.resx">
-      <DependentUpon>201801051507150_RespostaAgain.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801052340419_modeloInicial.resx">
+      <DependentUpon>201801052340419_modeloInicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
