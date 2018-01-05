@@ -42,7 +42,8 @@
                     @Html.DisplayFor(modelItem => item.Resposta)
                 </td>
             }
-            @if ((this.User.IsInRole("Pais")) && item.PaiID == @ViewBag.pai) { 
+            @if ((this.User.IsInRole("Pais")) && item.PaiID == @ViewBag.pai)
+            {
                 <td>
                     @Html.ActionLink("Detalhes", "Details", new { id = item.PedidoID }) |
                     @Html.ActionLink("Eliminar", "Delete", new { id = item.PedidoID })
@@ -50,9 +51,16 @@
             }
             @if ((this.User.IsInRole("Instituição")) && @ViewBag.inst == item.Anuncio.Servico.Instituicao.InstituicaoID)
             {
-                <td>
-                    @Html.ActionLink("Responder", "Edit", new { id = item.PedidoID })
-                </td>
+                if (item.Resposta.ToString() != "Sim" && item.Resposta.ToString() != "Não")
+                {
+                    <td>
+                        @Html.ActionLink("Responder", "Edit", new { id = item.PedidoID })
+                    </td>
+                }
+                if (item.Resposta.ToString() == "Sim" || item.Resposta.ToString() == "Não")
+                {
+                    <td>Respondido</td>
+                }
             }
             @if ((this.User.IsInRole("Admin")))
             {

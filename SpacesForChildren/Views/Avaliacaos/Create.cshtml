@@ -15,6 +15,14 @@
         <div class="form-horizontal">
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.Label("Serviço:", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ServicoID", null, new { @class = "form-control" })
+                </div>
+            </div>
+
             <div class="form-group">
                 @Html.LabelFor(model => model.AvaliacaoPreco, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -53,7 +61,8 @@
             </div>
         </div>
     }
-    </hr>
+
+    <hr />
     <div>
         @Html.ActionLink("Página Principal", "../Home/Index") |
         @Html.ActionLink("Lista de Avaliações", "Index")

@@ -45,11 +45,11 @@
     </div>
         <hr />
     <p>
-        @if (@ViewBag.pai == Model.PaiID.ToString())
+        @if (!(this.User.IsInRole("Pais")))
         {
             @Html.ActionLink("Editar", "Edit", new { id = Model.PedidoID })
         }
-        @if (@ViewBag.pai != Model.PaiID.ToString())
+        @if (this.User.IsInRole("Pais"))
         {
             @Html.ActionLink("Página Principal", "../Home/Index")
         }

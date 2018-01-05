@@ -16,7 +16,6 @@ namespace SpacesForChildren.Controllers
         private SFCContext db = new SFCContext();
 
         // GET: Avaliacaos
-        [Autorizacao]
         public ActionResult Index()
         {
             using (var db2 = new ApplicationDbContext())
@@ -80,8 +79,23 @@ namespace SpacesForChildren.Controllers
                 }
             }
 
-            ViewBag.PaiID = new SelectList(db.Pais, "PaiID", "PaisNome");
-            ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao");
+            var user = User.Identity.GetUserName();
+            var userId = db.Pais
+                .Where(m => m.PaisEmail == user)
+                .Select(m => m.PaiID)
+                .SingleOrDefault();
+
+            var requests = db.Pedidos
+                .Where(m => m.PaiID == userId && m.Resposta.ToString() == "Sim");
+
+            var announcements = requests
+                .Select(m => m.Anuncio);
+
+            var services = announcements
+                .Where(m => ((DateTime)m.AnuncioData) < DateTime.Today)
+                .Select(m => m.Servico);
+
+            ViewBag.ServicoID = new SelectList(services, "ServicoID", "ServicosDescricao");
             return View();
         }
 
@@ -107,13 +121,23 @@ namespace SpacesForChildren.Controllers
                     }
                 }
 
+                var user = User.Identity.GetUserName();
+                var userId = db.Pais
+                    .Where(m => m.PaisEmail == user)
+                    .Select(m => m.PaiID)
+                    .SingleOrDefault();
+
+                avaliacao.PaiID = userId;
+
+                
+
                 db.Avaliacoes.Add(avaliacao);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PaiID = new SelectList(db.Pais, "PaiID", "PaisNome", avaliacao.PaiID);
-            ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao", avaliacao.ServicoID);
+            //ViewBag.PaiID = new SelectList(db.Pais, "PaiID", "PaisNome", avaliacao.PaiID);
+            //ViewBag.ServicoID = new SelectList(db.Servicos, "ServicoID", "ServicosDescricao", avaliacao.ServicoID);
             return View(avaliacao);
         }
 
