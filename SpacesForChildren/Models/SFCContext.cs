@@ -9,7 +9,7 @@ namespace SpacesForChildren.Models
 {
     public class SFCContext : DbContext
     {
-        public SFCContext() : base("name=DefaultConnection")
+        public SFCContext() : base("name=BaseDeDados")
         {
 
         }

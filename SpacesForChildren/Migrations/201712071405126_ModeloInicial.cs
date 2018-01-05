@@ -61,7 +61,7 @@ namespace SpacesForChildren.Migrations
                         InstituicaoID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ServicoID)
-                .ForeignKey("dbo.Instituicaos", t => t.InstituicaoID, cascadeDelete: true)
+                .ForeignKey("dbo.Instituicaos", t => t.InstituicaoID, cascadeDelete: false)
                 .Index(t => t.InstituicaoID);
             
             CreateTable(
@@ -107,7 +107,6 @@ namespace SpacesForChildren.Migrations
                 .PrimaryKey(t => t.PedidoID)
                 .ForeignKey("dbo.Anuncios", t => t.AnuncioID, cascadeDelete: true)
                 .ForeignKey("dbo.Pais", t => t.PaiID, cascadeDelete: true)
-                .ForeignKey("dbo.Respostas", t => t.RespostaID, cascadeDelete: false)
                 .Index(t => t.PaiID)
                 .Index(t => t.AnuncioID)
                 .Index(t => t.RespostaID);

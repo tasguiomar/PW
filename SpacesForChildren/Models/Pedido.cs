@@ -20,6 +20,7 @@ namespace SpacesForChildren.Models
         public int AnuncioID { get; set; }
         [Display(Name = "Resposta")]
         public Resp Resposta { get; set; }
+        public bool Avaliacao { get; set; }
 
         [ForeignKey("PaiID")]
         public virtual Pai Pai { get; set; }
