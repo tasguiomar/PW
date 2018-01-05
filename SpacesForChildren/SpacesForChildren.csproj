@@ -276,6 +276,14 @@
     <Compile Include="Migrations\201801051426117_novaConnectionString.Designer.cs">
       <DependentUpon>201801051426117_novaConnectionString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801051500128_respost.cs" />
+    <Compile Include="Migrations\201801051500128_respost.Designer.cs">
+      <DependentUpon>201801051500128_respost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801051507150_RespostaAgain.cs" />
+    <Compile Include="Migrations\201801051507150_RespostaAgain.Designer.cs">
+      <DependentUpon>201801051507150_RespostaAgain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Anuncio.cs" />
@@ -443,6 +451,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801051426117_novaConnectionString.resx">
       <DependentUpon>201801051426117_novaConnectionString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801051500128_respost.resx">
+      <DependentUpon>201801051500128_respost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801051507150_RespostaAgain.resx">
+      <DependentUpon>201801051507150_RespostaAgain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

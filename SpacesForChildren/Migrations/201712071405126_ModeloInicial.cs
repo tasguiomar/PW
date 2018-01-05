@@ -39,18 +39,6 @@ namespace SpacesForChildren.Migrations
                 .PrimaryKey(t => t.InstituicaoID);
             
             CreateTable(
-                "dbo.Respostas",
-                c => new
-                    {
-                        RespostaID = c.Int(nullable: false, identity: true),
-                        RespostaDecisao = c.Int(nullable: false),
-                        InstituicaoID = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.RespostaID)
-                .ForeignKey("dbo.Instituicaos", t => t.InstituicaoID, cascadeDelete: true)
-                .Index(t => t.InstituicaoID);
-            
-            CreateTable(
                 "dbo.Servicoes",
                 c => new
                     {
@@ -94,22 +82,20 @@ namespace SpacesForChildren.Migrations
                         PaisEmail = c.String(),
                     })
                 .PrimaryKey(t => t.PaiID);
-            
+
             CreateTable(
                 "dbo.Pedidoes",
                 c => new
-                    {
-                        PedidoID = c.Int(nullable: false, identity: true),
-                        PaiID = c.Int(nullable: false),
-                        AnuncioID = c.Int(nullable: false),
-                        RespostaID = c.Int(nullable: false),
-                    })
+                {
+                    PedidoID = c.Int(nullable: false, identity: true),
+                    PaiID = c.Int(nullable: false),
+                    AnuncioID = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.PedidoID)
                 .ForeignKey("dbo.Anuncios", t => t.AnuncioID, cascadeDelete: true)
                 .ForeignKey("dbo.Pais", t => t.PaiID, cascadeDelete: true)
                 .Index(t => t.PaiID)
-                .Index(t => t.AnuncioID)
-                .Index(t => t.RespostaID);
+                .Index(t => t.AnuncioID);
             
         }
         
@@ -120,11 +106,9 @@ namespace SpacesForChildren.Migrations
             DropForeignKey("dbo.Servicoes", "InstituicaoID", "dbo.Instituicaos");
             DropForeignKey("dbo.Avaliacaos", "ServicoID", "dbo.Servicoes");
             DropForeignKey("dbo.Avaliacaos", "PaiID", "dbo.Pais");
-            DropForeignKey("dbo.Pedidoes", "RespostaID", "dbo.Respostas");
             DropForeignKey("dbo.Pedidoes", "PaiID", "dbo.Pais");
             DropForeignKey("dbo.Pedidoes", "AnuncioID", "dbo.Anuncios");
             DropForeignKey("dbo.Respostas", "InstituicaoID", "dbo.Instituicaos");
-            DropIndex("dbo.Pedidoes", new[] { "RespostaID" });
             DropIndex("dbo.Pedidoes", new[] { "AnuncioID" });
             DropIndex("dbo.Pedidoes", new[] { "PaiID" });
             DropIndex("dbo.Avaliacaos", new[] { "ServicoID" });
@@ -137,7 +121,6 @@ namespace SpacesForChildren.Migrations
             DropTable("dbo.Pais");
             DropTable("dbo.Avaliacaos");
             DropTable("dbo.Servicoes");
-            DropTable("dbo.Respostas");
             DropTable("dbo.Instituicaos");
             DropTable("dbo.Anuncios");
         }

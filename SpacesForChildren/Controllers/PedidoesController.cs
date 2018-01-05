@@ -145,6 +145,7 @@ namespace SpacesForChildren.Controllers
 
                 pedido.Resposta = Resp.Espera;
                 pedido.PaiID = userId;
+                pedido.Avaliacao = false;
                 db.Pedidos.Add(pedido);
                 db.SaveChanges();
                 return RedirectToAction("Index");

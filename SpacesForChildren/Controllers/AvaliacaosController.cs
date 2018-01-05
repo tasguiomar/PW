@@ -86,7 +86,7 @@ namespace SpacesForChildren.Controllers
                 .SingleOrDefault();
 
             var requests = db.Pedidos
-                .Where(m => m.PaiID == userId && m.Resposta.ToString() == "Sim");
+                .Where(m => m.PaiID == userId && m.Resposta.ToString() == "Sim" && m.Avaliacao == false);
 
             var announcements = requests
                 .Select(m => m.Anuncio);
