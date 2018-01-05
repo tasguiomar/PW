@@ -129,7 +129,18 @@ namespace SpacesForChildren.Controllers
 
                 avaliacao.PaiID = userId;
 
-                
+                var request = db.Pedidos
+                    .Where(m => m.PaiID == userId && m.Avaliacao == false && m.Anuncio.ServicoID == avaliacao.ServicoID)
+                    .SingleOrDefault();
+
+                Pedido ped = db.Pedidos.Find(request.PedidoID);
+                db.Pedidos.Remove(ped);
+
+                db.SaveChanges();
+
+                request.Avaliacao = true;
+
+                db.Pedidos.Add(request);
 
                 db.Avaliacoes.Add(avaliacao);
                 db.SaveChanges();
