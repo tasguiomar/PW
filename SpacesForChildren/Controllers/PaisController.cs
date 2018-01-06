@@ -193,7 +193,9 @@ namespace SpacesForChildren.Controllers
 
             context.SaveChanges();
 
-            return View("ConfirmaPais",pais);
+            ViewBag.user = User.Identity.GetUserName();
+
+            return View("../Home/Index");
         }
 
         protected override void Dispose(bool disposing)

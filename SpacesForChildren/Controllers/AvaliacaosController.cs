@@ -131,7 +131,7 @@ namespace SpacesForChildren.Controllers
 
                 var request = db.Pedidos
                     .Where(m => m.PaiID == userId && m.Avaliacao == false && m.Anuncio.ServicoID == avaliacao.ServicoID)
-                    .SingleOrDefault();
+                    .FirstOrDefault();
 
                 Pedido ped = db.Pedidos.Find(request.PedidoID);
                 db.Pedidos.Remove(ped);

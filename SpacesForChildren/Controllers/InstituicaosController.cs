@@ -207,7 +207,9 @@ namespace SpacesForChildren.Controllers
 
             context.SaveChanges();
 
-            return View("ConfirmaInstituicao",instituicoes);
+            ViewBag.user = User.Identity.GetUserName();
+
+            return View("../Home/Index");
         }
 
         protected override void Dispose(bool disposing)

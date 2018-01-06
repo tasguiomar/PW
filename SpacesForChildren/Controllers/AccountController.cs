@@ -166,10 +166,11 @@ namespace SpacesForChildren.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            
-            ViewBag.Name = new SelectList(context.Roles.ToList().Where(x => x.Name != "Admin").ToList(),"Name","Name");
-            //ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
 
+            //ViewBag.Name = new SelectList((context.Roles.ToList().Where(x => x.Name != "Admin")).ToList(),"Name","Name");
+            string admin = "Admin";
+            ViewBag.Name = new SelectList(context.Roles.Where(x => x.Name != admin).ToList(), "Name", "Name");
+            
             return View();
         }
 
